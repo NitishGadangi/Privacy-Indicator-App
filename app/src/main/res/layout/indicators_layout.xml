@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_cam"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:src="@drawable/ic_dot"
+        android:tint="@color/cam"
+        tools:ignore="UseAppTint"/>
+
+    <ImageView
+        android:id="@+id/iv_mic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:padding="4dp"
+        android:src="@drawable/ic_dot"
+        android:tint="@color/mic"
+        tools:ignore="UseAppTint" />
+</LinearLayout>
