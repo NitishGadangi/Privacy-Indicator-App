@@ -47,6 +47,15 @@
             android:orientation="vertical">
 
             <include
+                android:id="@+id/content_service_disabled"
+                android:visibility="gone"
+                layout="@layout/content_service_disabled"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <include
+                android:id="@+id/content_service_enabled"
+                android:visibility="gone"
                 layout="@layout/content_service_enabled"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
