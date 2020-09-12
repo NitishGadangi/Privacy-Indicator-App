@@ -7,6 +7,9 @@ import android.graphics.PixelFormat;
 import android.hardware.camera2.CameraManager;
 import android.media.AudioManager;
 import android.media.AudioRecordingConfiguration;
+import android.os.Build;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +91,13 @@ public class IndicatorService extends AccessibilityService {
 
     private void triggerVibration(){
         if (sharedPrefManager.isVibrationEnabled()){
-
+            Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                //deprecated in API 26
+                v.vibrate(500);
+            }
         }
     }
 
