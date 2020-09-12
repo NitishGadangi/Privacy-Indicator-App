@@ -30,4 +30,6 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    //BottomNavigation
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 }
