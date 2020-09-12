@@ -2,4 +2,9 @@
     <string name="app_name">Privacy Indicator</string>
     <string name="service_description">Service Description</string>
     <string name="service_summary">Service Summary</string>
+    <string name="made_by">Made with ❤ by Nitish</string>
+    <string name="app_description">app_description</string>
+    <string name="support_text">I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
+If you use any of my projects or like what I'm doing, please consider backing me with simple donations so that I can continue my open source work.</string>
+    <string name="disclaimer_text">disclaimer_text</string>
 </resources>
