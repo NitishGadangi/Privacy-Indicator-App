@@ -34,11 +34,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
-                android:textSize="18sp"
                 android:text="@string/app_description"
                 android:textAlignment="center"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="5dp"
@@ -67,9 +67,9 @@
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Disclaimer"
-                        android:drawablePadding="8dp"
                         android:drawableStart="@drawable/ic_caution"
+                        android:drawablePadding="8dp"
+                        android:text="Disclaimer"
                         android:textColor="@color/blackPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -78,21 +78,21 @@
                         android:id="@+id/textView15"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/disclaimer_text"
-                        android:textSize="18sp"
                         android:layout_marginTop="8dp"
-                        android:textColor="@color/blackSecondary" />
+                        android:text="@string/disclaimer_text"
+                        android:textColor="@color/blackSecondary"
+                        android:textSize="18sp" />
 
                     <Button
                         android:id="@+id/btn_bug"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:textSize="17sp"
-                        android:textColor="@android:color/white"
                         android:backgroundTint="@color/cam"
+                        android:text="Report Bug or Suggest a Feature"
                         android:textAllCaps="false"
-                        android:text="Report Bug or Suggest a Feature" />
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

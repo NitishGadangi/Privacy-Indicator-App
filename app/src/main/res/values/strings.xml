@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">Privacy Indicator</string>
-    <string name="service_description">Service Description</string>
-    <string name="service_summary">Service Summary</string>
+    <string name="service_description">When this service is enabled it lets \'Privacy Indicators App\' to display notifications and indicators
+        every time a third-party app or a service uses camera or microphone on any screen.
+        \n\nThis Service/App doesn\'t have any permission to use internet or your device\'s camera, microphone or any other Hardware. And will NOT gather any data whatsoever.
+    </string>
+    <string name="service_summary">Get notified every time a third-party app uses camera or microphone</string>
     <string name="made_by">Made with ❤ by Nitish</string>
-    <string name="app_description">app_des</string>
+    <string name="app_description">Get notified every time a third-party app or a service uses camera or microphone. Inspired from ios14 recording indicators.</string>
     <string name="support_text"> I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
 If you use any of my projects or like what I\'m doing, please consider backing me with simple donations so that I can continue my open source work.</string>
     <string name="disclaimer_text"> The current build of the app is still in beta, and not extensively tested on various devices.\n\n
