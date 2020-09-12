@@ -3,8 +3,14 @@
     <color name="colorPrimary">#432FBF</color>
     <color name="colorPrimaryDark">#432FBF</color>
     <color name="colorAccent">#432FBF</color>
+
     <color name="blackPrimary">#000000</color>
     <color name="blackSecondary">#3e3e3e</color>
+
     <color name="mic">#FFA840</color>
     <color name="cam">#FC6042</color>
+
+    <color name="colorTextPrimary">#ffffff</color>
+    <color name="colorTextSecondary">#A3FFFFFF</color>
+    <color name="colorBadge">#f4d415</color>
 </resources>
