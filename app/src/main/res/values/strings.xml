@@ -3,10 +3,15 @@
     <string name="service_description">Service Description</string>
     <string name="service_summary">Service Summary</string>
     <string name="made_by">Made with ❤ by Nitish</string>
-    <string name="app_description">app_description</string>
-    <string name="support_text">I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
+    <string name="app_description">app_des</string>
+    <string name="support_text"> I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
 If you use any of my projects or like what I\'m doing, please consider backing me with simple donations so that I can continue my open source work.</string>
-    <string name="disclaimer_text">disclaimer_text</string>
+    <string name="disclaimer_text"> The current build of the app is still in beta, and not extensively tested on various devices.\n\n
+        <b>If you find any issue or would like to request a feature</b>
+        feel free to use the below button and open an issue on the GitHub Repo.</string>
     <string name="menu_home">Home</string>
     <string name="menu_help">Help</string>
+    <string name="built_by">Built in FOSS HACKS</string>
+    <string name="notification_alert_summary">you will get an active notification on the status bar while an app is using your camera or microphone.</string>
+    <string name="vibration_alert_summary">you will get a haptic feedback every time any app starts using camera or microphone.</string>
 </resources>

@@ -38,5 +38,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.3.0"
 
     //ColorPicker
+    implementation 'com.github.dhaval2404:colorpicker:1.2.1'
 
 }

@@ -2,6 +2,7 @@ package com.nitish.privacyindicator;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.hardware.camera2.CameraManager;
 import android.media.AudioManager;
@@ -18,17 +19,26 @@ import android.widget.TextView;
 import java.util.List;
 
 public class IndicatorService extends AccessibilityService {
-    FrameLayout mLayout;
-    ImageView iv_cam, iv_mic;
+    private FrameLayout mLayout;
+    private ImageView iv_cam, iv_mic;
 
-    CameraManager cameraManager;
-    AudioManager audioManager;
+    private CameraManager cameraManager;
+    private AudioManager audioManager;
+    private SharedPrefManager sharedPrefManager;
+
+    private WindowManager.LayoutParams lp;
+    private WindowManager wm;
 
     @Override
     protected void onServiceConnected() {
+        fetchData();
         createOverlay();
         setUpInnerViews();
         startCallBacks();
+    }
+
+    private void fetchData() {
+        sharedPrefManager = SharedPrefManager.getInstance(getApplicationContext());
     }
 
     private void startCallBacks() {
@@ -43,7 +53,9 @@ public class IndicatorService extends AccessibilityService {
             @Override
             public void onCameraUnavailable(String cameraId) {
                 super.onCameraUnavailable(cameraId);
-                iv_cam.setVisibility(View.VISIBLE);
+                updateLayoutGravity();
+                setupDotTints();
+                if (sharedPrefManager.isCameraIndicatorEnabled()) iv_cam.setVisibility(View.VISIBLE);
                 triggerVibration();
             }
         }, null);
@@ -54,7 +66,9 @@ public class IndicatorService extends AccessibilityService {
             @Override
             public void onRecordingConfigChanged(List<AudioRecordingConfiguration> configs) {
                 if (configs.size() > 0) {
-                    iv_mic.setVisibility(View.VISIBLE);
+                    updateLayoutGravity();
+                    setupDotTints();
+                    if (sharedPrefManager.isMicIndicatorEnabled()) iv_mic.setVisibility(View.VISIBLE);
                     triggerVibration();
                 }else {
                     iv_mic.setVisibility(View.GONE);
@@ -63,13 +77,25 @@ public class IndicatorService extends AccessibilityService {
         }, null);
     }
 
-    private void triggerVibration(){
+    private void setupDotTints(){
+        setViewTint(iv_cam, sharedPrefManager.getCameraIndicatorColor());
+        setViewTint(iv_mic, sharedPrefManager.getMicIndicatorColor());
+    }
 
+    private void setViewTint(ImageView imageView, String hex){
+        imageView.setColorFilter(Color.parseColor(hex), android.graphics.PorterDuff.Mode.SRC_IN);
+    }
+
+    private void triggerVibration(){
+        if (sharedPrefManager.isVibrationEnabled()){
+
+        }
     }
 
     private void setUpInnerViews() {
         iv_cam = mLayout.findViewById(R.id.iv_cam);
         iv_mic = mLayout.findViewById(R.id.iv_mic);
+        setupDotTints();
         iv_cam.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -77,12 +103,13 @@ public class IndicatorService extends AccessibilityService {
                 iv_mic.setVisibility(View.GONE);
             }
         },1000);
+
     }
 
     private void createOverlay() {
-        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         mLayout = new FrameLayout(this);
-        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp = new WindowManager.LayoutParams();
         lp.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY;
         lp.format = PixelFormat.TRANSLUCENT;
         lp.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
@@ -94,7 +121,23 @@ public class IndicatorService extends AccessibilityService {
         wm.addView(mLayout, lp);
     }
 
+    private void updateLayoutGravity(){
+        lp.gravity = getLayoutGravity();
+        wm.updateViewLayout(mLayout,lp);
+    }
+
+    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
     private int getLayoutGravity() {
+        int position = sharedPrefManager.getPosition();
+        if (position == 0){
+            return Gravity.TOP | Gravity.END;
+        }else if (position == 1){
+            return Gravity.BOTTOM | Gravity.END;
+        }else if (position == 2){
+            return Gravity.BOTTOM | Gravity.START;
+        }else if (position == 3){
+            return Gravity.TOP | Gravity.START;
+        }
         return Gravity.TOP | Gravity.END;
     }
 
