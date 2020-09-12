@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/service_description"
+    android:summary="@string/service_summary"
+    android:settingsActivity="com.example.android.accessibility.ServiceSettingsActivity"
+    android:packageNames="com.nitish.privacyindicator"
+    android:accessibilityFlags="flagRetrieveInteractiveWindows"
+    android:canRetrieveWindowContent="true"/>

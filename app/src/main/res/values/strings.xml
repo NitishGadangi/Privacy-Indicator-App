@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Privacy Indicator</string>
+    <string name="service_description">Service Description</string>
+    <string name="service_summary">Service Summary</string>
 </resources>
