@@ -17,7 +17,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -26,7 +25,9 @@ public class IndicatorService extends AccessibilityService {
     private ImageView iv_cam, iv_mic;
 
     private CameraManager cameraManager;
+    private CameraManager.AvailabilityCallback cameraCallback;
     private AudioManager audioManager;
+    private AudioManager.AudioRecordingCallback micCallback;
     private SharedPrefManager sharedPrefManager;
 
     private WindowManager.LayoutParams lp;
@@ -46,38 +47,43 @@ public class IndicatorService extends AccessibilityService {
 
     private void startCallBacks() {
         cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
-        cameraManager.registerAvailabilityCallback(new CameraManager.AvailabilityCallback() {
+        cameraManager.registerAvailabilityCallback(getCameraCallback(), null);
+
+        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        audioManager.registerAudioRecordingCallback(getMicCallback(), null);
+    }
+
+    private CameraManager.AvailabilityCallback getCameraCallback(){
+        cameraCallback = new CameraManager.AvailabilityCallback() {
             @Override
             public void onCameraAvailable(String cameraId) {
                 super.onCameraAvailable(cameraId);
-                iv_cam.setVisibility(View.GONE);
+                hideCam();
             }
 
             @Override
             public void onCameraUnavailable(String cameraId) {
                 super.onCameraUnavailable(cameraId);
-                updateLayoutGravity();
-                setupDotTints();
-                if (sharedPrefManager.isCameraIndicatorEnabled()) iv_cam.setVisibility(View.VISIBLE);
+                showCam();
                 triggerVibration();
             }
-        }, null);
+        };
+        return cameraCallback;
+    }
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-
-        audioManager.registerAudioRecordingCallback(new AudioManager.AudioRecordingCallback() {
+    private AudioManager.AudioRecordingCallback getMicCallback(){
+        micCallback = new AudioManager.AudioRecordingCallback() {
             @Override
             public void onRecordingConfigChanged(List<AudioRecordingConfiguration> configs) {
                 if (configs.size() > 0) {
-                    updateLayoutGravity();
-                    setupDotTints();
-                    if (sharedPrefManager.isMicIndicatorEnabled()) iv_mic.setVisibility(View.VISIBLE);
+                    showMic();
                     triggerVibration();
                 }else {
-                    iv_mic.setVisibility(View.GONE);
+                    hideMic();
                 }
             }
-        }, null);
+        };
+        return micCallback;
     }
 
     private void setupDotTints(){
@@ -150,6 +156,37 @@ public class IndicatorService extends AccessibilityService {
         return Gravity.TOP | Gravity.END;
     }
 
+    private void showMic(){
+        if (sharedPrefManager.isMicIndicatorEnabled()){
+            updateLayoutGravity();
+            setupDotTints();
+            iv_mic.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideMic(){
+        iv_mic.setVisibility(View.GONE);
+    }
+
+    private void showCam(){
+        if (sharedPrefManager.isCameraIndicatorEnabled()){
+            updateLayoutGravity();
+            setupDotTints();
+            iv_cam.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void hideCam(){
+        iv_cam.setVisibility(View.GONE);
+    }
+
+    public void upScaleView(View view) {
+        view.animate().scaleX(1f).scaleY(1f).setDuration(500);
+    }
+
+    public void downScaleView(View view) {
+        view.animate().scaleX(0f).scaleY(0f).setDuration(500);
+    }
 
     @Override
     public void onInterrupt() {
@@ -161,8 +198,24 @@ public class IndicatorService extends AccessibilityService {
 
     }
 
+    private void unRegisterCameraCallBack(){
+        if (cameraManager != null
+            && cameraCallback !=null) {
+            cameraManager.unregisterAvailabilityCallback(cameraCallback);
+        }
+    }
+
+    private void unRegisterMicCallback(){
+        if (audioManager != null
+            && micCallback != null) {
+            audioManager.unregisterAudioRecordingCallback(micCallback);
+        }
+    }
+
     @Override
     public void onDestroy() {
+        unRegisterCameraCallBack();
+        unRegisterMicCallback();
         super.onDestroy();
     }
 }
