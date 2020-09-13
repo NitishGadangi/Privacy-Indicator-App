@@ -26,7 +26,58 @@
 </br>
 <hr/>
 
-> More Info will be added soon
+## Back Story
+**Recording Indicators in iOS14 :** With iOS 14, Apple is introducing a camera and microphone recording indicator in the status bar. It will appear as an orange dot above the signal bar. The **idea of a recording indicator is to alert users whenever the mic or camera are being used.** The feature will give users more control over data and privacy.
+![enter image description here](https://9to5mac.com/wp-content/uploads/sites/6/2020/07/green-dot-ios-14.jpg?quality=82&strip=all)
+
+**However Android lacks such kind of privacy feature**. **Apperantly, any app can use your Camera and Mic without any special notification** (once you have granted the permission). This might give a door for Malware to run a service in background and Track everything you do Visually and Might be a threat to your privacy.
+
+With increase in usage of Online Platforms for Audio and Video Conferences, its important to track which app is accessing your Camera or Microphone in the Realtime.
+
+*This Meme says it all..... 😛*
+
+![enter image description here](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/meme.jpeg?raw=true)
+
+##  About Privacy Indicators app
+Privacy Indiactors will bring the above Recording Indicators feature of iOS 14 to Android (With more extra features and Customizations 🥳). 
+* Get Notified everytime any third-party app is accessing your Camera.
+* Get Notified everytime any app is accessing your Microphone.
+* You can suatomize indicator color and its position
+* Option to enable Haptic feedback when indicators appear
+* You can turn off any individual features in required
+
+**So faar the above features are built in the [FOSS HACKs](https://fossunited.org/hackathon) Time Period are live on the [current version(v0.11)](https://github.com/NitishGadangi/Privacy-Indicator-App/releases)**
+
+*So install the app and will never have trust issues with the Camera and Mic usage 😉.*
+
+> This Service/App doesn\'t have any permission to use internet or your
+> device\'s camera, microphone or any other Hardware. And will NOT
+> gather any data whatsoever.
+### What will be in Next Releases
+This app is completely Free and OpenSource so any one can [Request a Feature](https://github.com/NitishGadangi/Privacy-Indicator-App/issues) or [Report a Bug](https://github.com/NitishGadangi/Privacy-Indicator-App/issues).
+
+ Also any kind of [Contributions](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/README.md#contribution) always encouraged.
+> **The code is completely clean and well organized , so can you can understand and start contributing in no-time.  (Special credits to
+> Myself 😛)**
+
+Here are some features which are good to have in the upcoming releases.
+* Log all details about the App which are accessing the Camera and Microphone in Realtime
+* Add an option for Notification Alert (UI is done)
+* App option to use Notification indicator Hardware as Privacy Indicator
+* Feature to set size of the Indicators
+* Change Opacity of the Indicators
+And many more possible Features and Customizations.
+
+## How to Use
+**Download the App from [Releases](https://github.com/NitishGadangi/Privacy-Indicator-App/releases) or directly from [Here](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing)** 
+1. This App will work only on devices with _Android_ 7.0 (_API_ level _24_) and above, so make sure you having the compactible device.
+2. After install the App, Enable the Service from the Accessibility Settings.
+3. You can Customise the Indicators color and position as per your choice from the Home.
+4. Also if required you can enable Vibration Feedback option.
+5. Kudos 🤝, You are good to go. 
+
+## Screenshots
+> Will be added Soon
 
 ## Download from here:
 **Download from [G Drive](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing).**
@@ -35,16 +86,12 @@
 
 *Will be Soon Live on Playstore and other platfoms*
 
-## Like my work?
-I am a student, tutor, engineer and a maker to various projects. For 2+ years, I have been working on Open Source.
-
-If you use any of my projects or like what I'm doing, please consider backing me with simple donations so that I can continue my open source work.
-
-[![Buy me a coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://nitishgadangi.github.io/?buy_me_coffee)
-
-**Consider Giving a ⭐ [here](https://github.com/NitishGadangi/Privacy-Indicator-App/) .**
-
 ## Contribution
+> **The code is completely clean and well organized , so can you can understand and start contributing in no-time.  (Special credits to
+> Myself 😛)**
+
+**Here are the instructions to set up the Developer Environment for the Contribution**
+
 ### Fork
 _**Note**: This is only needed if you want to contribute to the project._
 
@@ -76,6 +123,15 @@ Follow the steps below to open the project in Android Studio
 3.  Browse to the directory where you cloned the project.
 4.  Select the  `Privacy-Indicator-App`  directory and click open.
 5.  Android Studio will download the libraries required to run the project and open it in a new window.
+
+## Like my work?
+I am a student, tutor, engineer and a maker to various projects. For 2+ years, I have been working on Open Source.
+
+If you use any of my projects or like what I'm doing, please consider backing me with simple donations so that I can continue my open source work.
+
+[![Buy me a coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://nitishgadangi.github.io/?buy_me_coffee)
+
+**Consider Giving a ⭐ [here](https://github.com/NitishGadangi/Privacy-Indicator-App/) .**
 
 ## Credits
 **Thanks to [ibrahimsn98](https://github.com/ibrahimsn98/) for [SmoothBottomBar](https://github.com/ibrahimsn98/SmoothBottomBar) Library and making its integration super simple**
