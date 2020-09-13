@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_cam"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_weight="1"
         android:padding="4dp"
         android:src="@drawable/ic_dot"
@@ -18,8 +18,8 @@
 
     <ImageView
         android:id="@+id/iv_mic"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_weight="1"
         android:padding="4dp"
         android:src="@drawable/ic_dot"
