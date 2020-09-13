@@ -8,6 +8,8 @@
   <p align="center">
     Get notified every time a third-party app or a service uses camera or microphone. Inspired from ios14 recording indicators. 
     <br />
+    <a href="https://github.com/NitishGadangi/Privacy-Indicator-App#download-from-here">Download</a>
+    .
     <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/issues">Report Bug</a>
     .
     <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/issues">Request Feature</a>
