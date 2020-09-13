@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#">
-    <img src="screenshots/rounder_icon.png" alt="Logo" width="120" height="120">
+    <img src="https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/rounder_icon.png?raw=true" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">Privacy Indicators for Android</h3>
