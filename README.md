@@ -75,6 +75,7 @@ And many more possible Features and Customizations.
 3. You can Customise the Indicators color and position as per your choice from the Home.
 4. Also if required you can enable the Vibration Feedback option.
 5. Kudos 🤝, You are good to go. 
+6. The Service keeps running in the background and automatically starts even you restart the mobile 😎.
 
 ## Screenshots
 |![Screenshot1](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss1.jpeg?raw=true)|![Screenshot2](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss2.jpeg?raw=true)|![Screenshot3](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss3.jpeg?raw=true)|
