@@ -31,8 +31,6 @@
 ## Download from here:
 **Download from [G Drive](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing).**
 
-or
-
 **Access all the releases from [Releases tab](https://github.com/NitishGadangi/Privacy-Indicator-App/releases).**
 
 *Will be Soon Live on Playstore and other platfoms*
