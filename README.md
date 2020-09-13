@@ -25,3 +25,32 @@
 </p>
 </br>
 <hr/>
+
+> More Info will be added soon
+
+## Download from here:
+**Download from [G Drive](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing).**
+
+or
+
+**Access all the releases from [Releases tab](https://github.com/NitishGadangi/Privacy-Indicator-App/releases).**
+
+*Will be Soon Live on Playstore and other platfoms*
+
+## Like my work?
+I am a student, tutor, engineer and a maker to various projects. For 2+ years, I have been working on Open Source.
+
+If you use any of my projects or like what I'm doing, please consider backing me with simple donations so that I can continue my open source work.
+
+[![Buy me a coffee](https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png)](https://nitishgadangi.github.io/?buy_me_coffee)
+
+**Consider Giving a ⭐ [here](https://github.com/NitishGadangi/Privacy-Indicator-App/) .**
+
+## Credits
+**Thanks to [ibrahimsn98](https://github.com/ibrahimsn98/) for [SmoothBottomBar](https://github.com/ibrahimsn98/SmoothBottomBar) Library and making its integration super simple**
+
+**Thanks to [Dhaval2404](https://github.com/Dhaval2404/) for the amazing [ColorPicker](https://github.com/Dhaval2404/ColorPicker) for Android**
+
+**Special Credits to [sanjaveljanoska](https://dribbble.com/sanjaveljanoska) for the awesome icon**
+
+**Made with ❤️ by Nitish**
