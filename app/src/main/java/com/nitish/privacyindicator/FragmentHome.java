@@ -180,7 +180,7 @@ public class FragmentHome extends Fragment {
                         setViewTint(iv_cam, s);
                     }
                 };
-                new ColorPickerDialog.Builder(getContext(),
+                new ColorPickerDialog.Builder(requireActivity(),
                         "Camera Indicator Color",
                         "ok", "cancel",
                         colorListener,
@@ -199,7 +199,7 @@ public class FragmentHome extends Fragment {
                         setViewTint(iv_mic, s);
                     }
                 };
-                new ColorPickerDialog.Builder(getContext(),
+                new ColorPickerDialog.Builder(requireActivity(),
                         "Microphone Indicator Color",
                         "ok", "cancel",
                         colorListener,
