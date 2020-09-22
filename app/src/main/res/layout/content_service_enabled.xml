@@ -254,13 +254,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switch_notif"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notification Alert"
-                android:enabled="false"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
