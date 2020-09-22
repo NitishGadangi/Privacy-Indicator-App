@@ -15,6 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
@@ -162,33 +165,59 @@ public class IndicatorService extends AccessibilityService {
     private void showMic(){
         if (sharedPrefManager.isMicIndicatorEnabled()){
             updateLayoutGravity();
+            updateMicIndicatorSize();
             setupDotTints();
             iv_mic.setVisibility(View.VISIBLE);
+//            upScaleView(iv_mic);
         }
     }
 
+    private void updateMicIndicatorSize() {
+        int size = sharedPrefManager.getMicIndicatorSize();
+        iv_mic.requestLayout();
+        iv_mic.getLayoutParams().height = size;
+        iv_mic.getLayoutParams().width = size;
+    }
+
     private void hideMic(){
+//        downScaleView(iv_mic);
         iv_mic.setVisibility(View.GONE);
     }
 
     private void showCam(){
         if (sharedPrefManager.isCameraIndicatorEnabled()){
             updateLayoutGravity();
+            updateCamIndicatorSize();
             setupDotTints();
             iv_cam.setVisibility(View.VISIBLE);
+//            upScaleView(iv_cam);
         }
     }
 
+    private void updateCamIndicatorSize() {
+        int size = sharedPrefManager.getCameraIndicatorSize();
+        iv_cam.requestLayout();
+        iv_cam.getLayoutParams().height = size;
+        iv_cam.getLayoutParams().width = size;
+    }
+
     private void hideCam(){
+//        downScaleView(iv_cam);
         iv_cam.setVisibility(View.GONE);
     }
 
     public void upScaleView(View view) {
-        view.animate().scaleX(1f).scaleY(1f).setDuration(500);
+        ScaleAnimation fade_in =  new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        fade_in.setDuration(350);     // animation duration in milliseconds
+        fade_in.setFillAfter(true);    // If fillAfter is true, the transformation that this animation performed will persist when it is finished.
+        view.startAnimation(fade_in);
     }
 
     public void downScaleView(View view) {
-        view.animate().scaleX(0f).scaleY(0f).setDuration(500);
+        ScaleAnimation fade_in =  new ScaleAnimation(1f, 0f, 1f, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        fade_in.setDuration(350);     // animation duration in milliseconds
+        fade_in.setFillAfter(true);    // If fillAfter is true, the transformation that this animation performed will persist when it is finished.
+        view.startAnimation(fade_in);
     }
 
     @Override

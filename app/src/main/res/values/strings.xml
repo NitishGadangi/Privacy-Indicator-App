@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Privacy Indicator</string>
+    <string name="app_name">Privacy Indicators</string>
     <string name="service_description">When this service is enabled it lets \'Privacy Indicators App\' to display notifications and indicators
         every time a third-party app or a service uses camera or microphone on any screen.
         \n\nThis Service/App doesn\'t have any permission to use internet or your device\'s camera, microphone or any other Hardware. And will NOT gather any data whatsoever.

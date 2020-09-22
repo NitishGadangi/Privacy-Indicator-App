@@ -13,6 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,6 +40,8 @@ public class FragmentHome extends Fragment {
     private RadioGroup radioGroup;
     private RadioButton rb_tl, rb_tr, rb_bl, rb_br;
     private ImageView iv_cam, iv_mic;
+    private SeekBar mic_size, cam_size;
+    private TextView tv_cam_size, tv_mic_size;
 
     @Override
     public void onResume() {
@@ -77,6 +81,10 @@ public class FragmentHome extends Fragment {
         rb_bl = root.findViewById(R.id.rb_bl);
         iv_cam = root.findViewById(R.id.iv_cam_color);
         iv_mic = root.findViewById(R.id.iv_mic_color);
+        cam_size = root.findViewById(R.id.cam_size);
+        mic_size = root.findViewById(R.id.mic_size);
+        tv_cam_size = root.findViewById(R.id.tv_cam_size);
+        tv_mic_size = root.findViewById(R.id.tv_mic_size);
     }
 
     private void setupViews() {
@@ -107,6 +115,11 @@ public class FragmentHome extends Fragment {
         setLocationRadioButton();
         setViewTint(iv_cam, sharedPrefManager.getCameraIndicatorColor());
         setViewTint(iv_mic, sharedPrefManager.getMicIndicatorColor());
+
+        cam_size.setProgress(sharedPrefManager.getCameraIndicatorSize());
+        tv_cam_size.setText(sharedPrefManager.getCameraIndicatorSize() + "");
+        mic_size.setProgress(sharedPrefManager.getMicIndicatorSize());
+        tv_mic_size.setText(sharedPrefManager.getMicIndicatorSize() + "");
     }
 
     private void setViewTint(ImageView imageView, String hex){
@@ -207,6 +220,42 @@ public class FragmentHome extends Fragment {
                         colorListener,
                         sharedPrefManager.getMicIndicatorColor(),
                         ColorShape.CIRCLE).show();
+            }
+        });
+
+        cam_size.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                sharedPrefManager.setCameraIndicatorSize(i);
+                tv_cam_size.setText(i + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        mic_size.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                sharedPrefManager.setMicIndicatorSize(i);
+                tv_mic_size.setText(i + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
     }
