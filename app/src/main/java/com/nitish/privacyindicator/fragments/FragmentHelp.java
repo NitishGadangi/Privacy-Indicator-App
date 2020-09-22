@@ -1,4 +1,4 @@
-package com.nitish.privacyindicator;
+package com.nitish.privacyindicator.fragments;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.nitish.privacyindicator.R;
 
 public class FragmentHelp extends Fragment {
 

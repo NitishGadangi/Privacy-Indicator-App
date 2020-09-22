@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".IndicatorService"
+            android:name=".services.IndicatorService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />

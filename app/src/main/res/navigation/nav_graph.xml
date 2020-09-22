@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/first_fragment"
-        android:name="com.nitish.privacyindicator.FragmentHome"
+        android:name="com.nitish.privacyindicator.fragments.FragmentHome"
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/second_fragment"
-        android:name="com.nitish.privacyindicator.FragmentHelp"
+        android:name="com.nitish.privacyindicator.fragments.FragmentHelp"
         android:label="Help"
         tools:layout="@layout/fragment_help" >
     </fragment>

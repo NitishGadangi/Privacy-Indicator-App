@@ -1,4 +1,4 @@
-package com.nitish.privacyindicator;
+package com.nitish.privacyindicator.services;
 
 import android.accessibilityservice.AccessibilityService;
 import android.content.Context;
@@ -18,6 +18,9 @@ import android.view.accessibility.AccessibilityEvent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.nitish.privacyindicator.R;
+import com.nitish.privacyindicator.SharedPrefManager;
+
 import java.util.List;
 
 public class IndicatorService extends AccessibilityService {
@@ -30,8 +33,8 @@ public class IndicatorService extends AccessibilityService {
     private AudioManager.AudioRecordingCallback micCallback;
     private SharedPrefManager sharedPrefManager;
 
-    private WindowManager.LayoutParams lp;
-    private WindowManager wm;
+    private WindowManager.LayoutParams layoutParams;
+    private WindowManager windowManager;
 
     @Override
     protected void onServiceConnected() {
@@ -46,10 +49,10 @@ public class IndicatorService extends AccessibilityService {
     }
 
     private void startCallBacks() {
-        cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
+        if (cameraManager == null) cameraManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
         cameraManager.registerAvailabilityCallback(getCameraCallback(), null);
 
-        audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager == null) audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         audioManager.registerAudioRecordingCallback(getMicCallback(), null);
     }
 
@@ -122,23 +125,23 @@ public class IndicatorService extends AccessibilityService {
     }
 
     private void createOverlay() {
-        wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mLayout = new FrameLayout(this);
-        lp = new WindowManager.LayoutParams();
-        lp.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY;
-        lp.format = PixelFormat.TRANSLUCENT;
-        lp.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.gravity = getLayoutGravity();
+        layoutParams = new WindowManager.LayoutParams();
+        layoutParams.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY;
+        layoutParams.format = PixelFormat.TRANSLUCENT;
+        layoutParams.flags |= WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
+        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        layoutParams.gravity = getLayoutGravity();
         LayoutInflater inflater = LayoutInflater.from(this);
         inflater.inflate(R.layout.indicators_layout, mLayout);
-        wm.addView(mLayout, lp);
+        windowManager.addView(mLayout, layoutParams);
     }
 
     private void updateLayoutGravity(){
-        lp.gravity = getLayoutGravity();
-        wm.updateViewLayout(mLayout,lp);
+        layoutParams.gravity = getLayoutGravity();
+        windowManager.updateViewLayout(mLayout, layoutParams);
     }
 
     //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
