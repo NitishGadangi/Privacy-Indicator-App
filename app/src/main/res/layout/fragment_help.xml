@@ -145,6 +145,16 @@
                         android:text="Buy Me A Coffee"
                         android:textColor="@android:color/white"
                         android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/btn_playstore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/playstore"
+                        android:text="Rate this App on Playstore"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

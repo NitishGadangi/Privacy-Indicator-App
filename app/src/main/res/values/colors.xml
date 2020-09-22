@@ -10,6 +10,8 @@
     <color name="mic">#FFA840</color>
     <color name="cam">#FC6042</color>
 
+    <color name="playstore">#88B131</color>
+
     <color name="colorTextPrimary">#ffffff</color>
     <color name="colorTextSecondary">#A3FFFFFF</color>
     <color name="colorBadge">#f4d415</color>

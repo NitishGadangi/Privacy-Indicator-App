@@ -17,7 +17,7 @@ import com.nitish.privacyindicator.R;
 
 public class FragmentHelp extends Fragment {
 
-    private Button btn_bug, btn_cofee;
+    private Button btn_bug, btn_cofee, btn_playstore;
     private TextView tv_made_by, tv_built_in;
     private View root;
 
@@ -35,6 +35,7 @@ public class FragmentHelp extends Fragment {
     private void setupViews() {
         btn_bug = root.findViewById(R.id.btn_bug);
         btn_cofee = root.findViewById(R.id.btn_buy_me_coffee);
+        btn_playstore = root.findViewById(R.id.btn_playstore);
         tv_built_in = root.findViewById(R.id.tv_built_in);
         tv_made_by = root.findViewById(R.id.tv_made_by);
     }
@@ -50,6 +51,12 @@ public class FragmentHelp extends Fragment {
             @Override
             public void onClick(View view) {
                 openBrowser("https://nitishgadangi.github.io/?buy_me_coffee/");
+            }
+        });
+        btn_playstore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openBrowser("https://play.google.com/store/apps/details?id=com.nitish.privacyindicator");
             }
         });
         tv_built_in.setOnClickListener(new View.OnClickListener() {

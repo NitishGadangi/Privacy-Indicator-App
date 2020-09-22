@@ -52,7 +52,7 @@ public class IndicatorService extends AccessibilityService {
     private String notification_channel_id = "PRIVACY_INDICATORS_NOTIFICATION";
     private NotificationManagerCompat notifManager;
     private NotificationCompat.Builder notificationBuilder;
-    int notificationID = 256;
+    private int notificationID = 256;
 
     private boolean isCameraOn = false;
     private boolean isMicOn = false;
