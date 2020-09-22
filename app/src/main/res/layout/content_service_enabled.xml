@@ -58,6 +58,43 @@
                 app:srcCompat="@drawable/ic_dot"
                 tools:ignore="UseAppTint" />
 
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Indicator Size"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cam_color" />
+
+            <TextView
+                android:id="@+id/tv_cam_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cam_color" />
+
+            <SeekBar
+                android:id="@+id/cam_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:min="25"
+                android:max="200"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView9"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -114,6 +151,43 @@
                 app:srcCompat="@drawable/ic_dot"
                 android:tint="@color/mic"
                 tools:ignore="UseAppTint"/>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Indicator Size"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_mic_color" />
+
+            <TextView
+                android:id="@+id/tv_mic_size"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_mic_color" />
+
+            <SeekBar
+                android:id="@+id/mic_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:min="25"
+                android:max="200"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_mic_size"
+                app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

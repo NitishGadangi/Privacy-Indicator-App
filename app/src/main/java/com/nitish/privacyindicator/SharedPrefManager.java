@@ -77,6 +77,14 @@ public class SharedPrefManager {
         return getString(context, "CAMERA_INDICATOR", "#FC6042");
     }
 
+    public void setCameraIndicatorSize(int value){
+        setInteger(context, "CAMERA_INDICATOR_SIZE", value);
+    }
+
+    public int getCameraIndicatorSize(){
+        return getInteger(context, "CAMERA_INDICATOR_SIZE", 55);
+    }
+
     public void setMicIndicatorEnabled(boolean value){
         setBoolean(context, "MIC_ENABLED", value);
     }
@@ -91,6 +99,14 @@ public class SharedPrefManager {
 
     public String getMicIndicatorColor(){
         return getString(context, "MIC_INDICATOR", "#FFA840");
+    }
+
+    public void setMicIndicatorSize(int value){
+        setInteger(context, "MIC_INDICATOR_SIZE", value);
+    }
+
+    public int getMicIndicatorSize(){
+        return getInteger(context, "MIC_INDICATOR_SIZE", 55);
     }
 
     public void setNotificationEnabled(boolean value){
