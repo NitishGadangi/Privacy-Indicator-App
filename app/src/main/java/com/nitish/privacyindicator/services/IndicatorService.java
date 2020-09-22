@@ -1,7 +1,11 @@
 package com.nitish.privacyindicator.services;
 
 import android.accessibilityservice.AccessibilityService;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.hardware.camera2.CameraManager;
@@ -21,10 +25,16 @@ import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
+import com.nitish.privacyindicator.HomeActivity;
 import com.nitish.privacyindicator.R;
 import com.nitish.privacyindicator.SharedPrefManager;
 
 import java.util.List;
+
+import static android.app.PendingIntent.FLAG_UPDATE_CURRENT;
 
 public class IndicatorService extends AccessibilityService {
     private FrameLayout mLayout;
@@ -38,6 +48,14 @@ public class IndicatorService extends AccessibilityService {
 
     private WindowManager.LayoutParams layoutParams;
     private WindowManager windowManager;
+
+    private String notification_channel_id = "PRIVACY_INDICATORS_NOTIFICATION";
+    private NotificationManagerCompat notifManager;
+    private NotificationCompat.Builder notificationBuilder;
+    int notificationID = 256;
+
+    private boolean isCameraOn = false;
+    private boolean isMicOn = false;
 
     @Override
     protected void onServiceConnected() {
@@ -64,14 +82,18 @@ public class IndicatorService extends AccessibilityService {
             @Override
             public void onCameraAvailable(String cameraId) {
                 super.onCameraAvailable(cameraId);
+                isCameraOn = false;
                 hideCam();
+                dismissNotification();
             }
 
             @Override
             public void onCameraUnavailable(String cameraId) {
                 super.onCameraUnavailable(cameraId);
+                isCameraOn = true;
                 showCam();
                 triggerVibration();
+                showNotification();
             }
         };
         return cameraCallback;
@@ -82,10 +104,14 @@ public class IndicatorService extends AccessibilityService {
             @Override
             public void onRecordingConfigChanged(List<AudioRecordingConfiguration> configs) {
                 if (configs.size() > 0) {
+                    isMicOn = true;
                     showMic();
                     triggerVibration();
+                    showNotification();
                 }else {
+                    isMicOn = false;
                     hideMic();
+                    dismissNotification();
                 }
             }
         };
@@ -208,16 +234,79 @@ public class IndicatorService extends AccessibilityService {
 
     public void upScaleView(View view) {
         ScaleAnimation fade_in =  new ScaleAnimation(0f, 1f, 0f, 1f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        fade_in.setDuration(350);     // animation duration in milliseconds
-        fade_in.setFillAfter(true);    // If fillAfter is true, the transformation that this animation performed will persist when it is finished.
+        fade_in.setDuration(350);
+        fade_in.setFillAfter(true);
         view.startAnimation(fade_in);
     }
 
     public void downScaleView(View view) {
         ScaleAnimation fade_in =  new ScaleAnimation(1f, 0f, 1f, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        fade_in.setDuration(350);     // animation duration in milliseconds
-        fade_in.setFillAfter(true);    // If fillAfter is true, the transformation that this animation performed will persist when it is finished.
+        fade_in.setDuration(350);
+        fade_in.setFillAfter(true);
         view.startAnimation(fade_in);
+    }
+
+    private void setupNotification(){
+        createNotificationChannel();
+        notificationBuilder =
+                new NotificationCompat.Builder(getApplicationContext(), notification_channel_id)
+                        .setSmallIcon(R.drawable.ic_ring)
+                        .setContentTitle(getNotificationTitle())
+                        .setContentText(getNotificationDescription())
+                        .setContentIntent(getPendingIntent())
+                        .setOngoing(true)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        notifManager = NotificationManagerCompat.from(getApplicationContext());
+    }
+
+    private String getNotificationTitle(){
+        if (isCameraOn && isMicOn) return "Your Camera and Mic is ON";
+        if (isCameraOn && !isMicOn) return "Your Camera is ON";
+        if (!isCameraOn && isMicOn) return "Your MIC is ON";
+        return "Your Camera or Mic is ON";
+    }
+
+    private String getNotificationDescription(){
+        if (isCameraOn && isMicOn) return "A third-party app is using your Camera and Microphone";
+        if (isCameraOn && !isMicOn) return "A third-party app is using your Camera";
+        if (!isCameraOn && isMicOn) return "A third-party app is using your Microphone";
+        return "A third-party app is using your Camera or Microphone";
+    }
+
+    private void showNotification(){
+        if (sharedPrefManager.isNotificationEnabled()) {
+            setupNotification();
+            if (notifManager != null) notifManager.notify(notificationID, notificationBuilder.build());
+        }
+    }
+
+    private void dismissNotification(){
+        if (isCameraOn || isMicOn) {
+            showNotification();
+        } else {
+            if (notifManager != null) notifManager.cancel(notificationID);
+        }
+    }
+
+    private PendingIntent getPendingIntent(){
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        return PendingIntent.getActivity(getApplicationContext(), 1, intent, FLAG_UPDATE_CURRENT);
+    }
+
+    private void createNotificationChannel(){
+        final String notification_channel = "Notifications for Privacy Indicators";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            NotificationChannel channel = new NotificationChannel(notification_channel_id, notification_channel, importance);
+            String description = getString(R.string.notification_alert_summary);
+            channel.setDescription(description);
+            channel.setLightColor(Color.RED);
+            NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
+        }
     }
 
     @Override
