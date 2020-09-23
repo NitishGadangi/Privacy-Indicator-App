@@ -56,8 +56,6 @@ Privacy Indicators will bring the above Recording Indicators feature of iOS 14 t
 * Option to enable Haptic feedback when indicators appear
 * You can turn off any individual features in required
 
-**So faar the above features are built in the [FOSS HACKs](https://fossunited.org/hackathon) Time Period is live on the [current version(v0.11)](https://github.com/NitishGadangi/Privacy-Indicator-App/releases)**
-
 *So install the app and will never have trust issues with the Camera and Mic usage 😉.*
 
 > This Service/App doesn\'t have any permission to use the internet or your
