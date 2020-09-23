@@ -93,7 +93,7 @@ And many more possible Features and Customizations.
 ## Download from here:
 
 <a href='https://play.google.com/store/apps/details?id=com.nitish.privacyindicator' target='_blank'>
-    <img height='150' style='border:0px;height:150px;' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' border='0' alt='Download from Playstore' />
+    <img height='150' style='border:0px;height:150px;' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' border='0' alt='Download from Playstore' />   </a>
   
 <h4 align="center">Access all the releases from <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/releases">Releases tab</a></h3>
 
