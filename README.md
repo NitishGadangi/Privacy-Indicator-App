@@ -88,9 +88,9 @@ And many more possible Features and Customizations.
 6. The Service keeps running in the background and automatically starts even you restart the mobile 😎.
 
 ## Screenshots
-|![Screenshot1](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss1.jpeg?raw=true)|![Screenshot2](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss2.jpeg?raw=true)|![Screenshot3](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss3.jpeg?raw=true)|
+|![Screenshot1](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss1.jpg?raw=true)|![Screenshot2](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss2.jpg?raw=true)|![Screenshot3](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss3.jpg?raw=true)|
 |---|---|---|
-|![Screenshot4](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss4.jpeg?raw=true)|![Screenshot5](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss5.jpeg?raw=true)|![Screenshot6](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss6.jpeg?raw=true)|
+|![Screenshot4](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss4.jpg?raw=true)|![Screenshot5](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss5.jpg?raw=true)|![Screenshot6](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss6.jpg?raw=true)|
 
 ## Download from here:
 **Download from [G Drive](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing).**
