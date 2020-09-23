@@ -79,7 +79,7 @@ Here are some features which are good to have in the upcoming releases.
 And many more possible Features and Customizations.
 
 ## How to Use
-**Download the App from [Releases](https://github.com/NitishGadangi/Privacy-Indicator-App/releases) or directly from [Here](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing)** 
+**Download the App from [Releases](https://github.com/NitishGadangi/Privacy-Indicator-App/releases)** 
 1. This App will work only on devices with _Android_ 7.0 (_API_ level _24_) and above, so make sure you having the compatible device.
 2. After installing the App, Enable the Service from the Accessibility Settings.
 3. You can Customise the Indicators color and position as per your choice from the Home.
@@ -93,7 +93,6 @@ And many more possible Features and Customizations.
 |![Screenshot4](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss4.jpg?raw=true)|![Screenshot5](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss5.jpg?raw=true)|![Screenshot6](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/ss6.jpg?raw=true)|
 
 ## Download from here:
-**Download from [G Drive](https://drive.google.com/file/d/1wHvdOCf9qsjR39DkdsaHRz7V0-DPu68K/view?usp=sharing).**
 
 **Access all the releases from [Releases tab](https://github.com/NitishGadangi/Privacy-Indicator-App/releases).**
 
