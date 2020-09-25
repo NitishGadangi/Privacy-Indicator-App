@@ -26,6 +26,7 @@ import com.github.dhaval2404.colorpicker.listener.ColorListener;
 import com.github.dhaval2404.colorpicker.model.ColorShape;
 import com.nitish.privacyindicator.R;
 import com.nitish.privacyindicator.SharedPrefManager;
+import com.nitish.privacyindicator.services.IndicatorService;
 
 public class FragmentHome extends Fragment {
 
@@ -273,7 +274,7 @@ public class FragmentHome extends Fragment {
     private boolean isAccessibilityEnabled() {
         String LOGTAG = "ACCESSIBILITY_ERROR";
         int accessibilityEnabled = 0;
-        final String ACCESSIBILITY_SERVICE = "com.nitish.privacyindicator/com.nitish.privacyindicator.services.IndicatorService";
+        final String ACCESSIBILITY_SERVICE = requireContext().getApplicationContext().getPackageName() + "/" + IndicatorService.class.getCanonicalName();
         boolean accessibilityFound = false;
         try {
             accessibilityEnabled = Settings.Secure.getInt(getActivity().getContentResolver(),android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
