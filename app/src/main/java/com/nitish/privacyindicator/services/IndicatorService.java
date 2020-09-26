@@ -173,7 +173,7 @@ public class IndicatorService extends AccessibilityService {
         windowManager.updateViewLayout(mLayout, layoutParams);
     }
 
-    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
+    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-TopCenter 5-BottomCenter
     private int getLayoutGravity() {
         int position = sharedPrefManager.getPosition();
         if (position == 0){
@@ -184,6 +184,10 @@ public class IndicatorService extends AccessibilityService {
             return Gravity.BOTTOM | Gravity.START;
         }else if (position == 3){
             return Gravity.TOP | Gravity.START;
+        }else if (position == 4){
+            return Gravity.TOP | Gravity.CENTER;
+        }else if (position == 5){
+            return Gravity.BOTTOM | Gravity.CENTER;
         }
         return Gravity.TOP | Gravity.END;
     }

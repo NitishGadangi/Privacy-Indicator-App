@@ -39,7 +39,7 @@ public class FragmentHome extends Fragment {
 
     private SwitchCompat mainSwitch, micSwitch, camSwitch, notifSwitch, vibSwitch;
     private RadioGroup radioGroup;
-    private RadioButton rb_tl, rb_tr, rb_bl, rb_br;
+    private RadioButton rb_tc, rb_tl, rb_tr, rb_bc, rb_bl, rb_br;
     private ImageView iv_cam, iv_mic;
     private SeekBar mic_size, cam_size;
     private TextView tv_cam_size, tv_mic_size;
@@ -76,8 +76,10 @@ public class FragmentHome extends Fragment {
         notifSwitch = root.findViewById(R.id.switch_notif);
         vibSwitch = root.findViewById(R.id.switch_vibration);
         radioGroup = root.findViewById(R.id.rg_location);
+        rb_tc = root.findViewById(R.id.rb_tc);
         rb_tl = root.findViewById(R.id.rb_tl);
         rb_tr = root.findViewById(R.id.rb_tr);
+        rb_bc = root.findViewById(R.id.rb_bc);
         rb_br = root.findViewById(R.id.rb_br);
         rb_bl = root.findViewById(R.id.rb_bl);
         iv_cam = root.findViewById(R.id.iv_cam_color);
@@ -127,7 +129,7 @@ public class FragmentHome extends Fragment {
         imageView.setColorFilter(Color.parseColor(hex), android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
-    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
+    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-TopCenter 5-BottomCenter
     private void setLocationRadioButton() {
         int position = sharedPrefManager.getPosition();
         if (position == 0){
@@ -138,6 +140,10 @@ public class FragmentHome extends Fragment {
             rb_bl.setChecked(true);
         }else if (position == 3){
             rb_tl.setChecked(true);
+        }else if (position == 4){
+            rb_tc.setChecked(true);
+        }else if (position == 5){
+            rb_bc.setChecked(true);
         }
     }
 
@@ -173,7 +179,7 @@ public class FragmentHome extends Fragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
+                //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-TopCenter 5-BottomCenter
                 if (i == R.id.rb_tr) {
                     sharedPrefManager.setPosition(0);
                 } else if (i == R.id.rb_br) {
@@ -182,6 +188,10 @@ public class FragmentHome extends Fragment {
                     sharedPrefManager.setPosition(2);
                 }else if (i == R.id.rb_tl) {
                     sharedPrefManager.setPosition(3);
+                }else if (i == R.id.rb_tc) {
+                    sharedPrefManager.setPosition(4);
+                }else if (i == R.id.rb_bc) {
+                    sharedPrefManager.setPosition(5);
                 }
             }
         });

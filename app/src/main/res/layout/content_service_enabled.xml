@@ -323,6 +323,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView7">
 
                 <RadioButton
+                    android:id="@+id/rb_tc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Top Center" />
+
+                <RadioButton
                     android:id="@+id/rb_tl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -335,6 +342,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Top Right" />
+
+                <RadioButton
+                    android:id="@+id/rb_bc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bottom Center" />
 
                 <RadioButton
                     android:id="@+id/rb_br"
