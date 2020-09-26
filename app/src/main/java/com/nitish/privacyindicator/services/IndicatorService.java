@@ -163,6 +163,9 @@ public class IndicatorService extends AccessibilityService {
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
         layoutParams.gravity = getLayoutGravity();
+        layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
         LayoutInflater inflater = LayoutInflater.from(this);
         inflater.inflate(R.layout.indicators_layout, mLayout);
         windowManager.addView(mLayout, layoutParams);
