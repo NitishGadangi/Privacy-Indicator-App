@@ -77,12 +77,20 @@ public class SharedPrefManager {
         return getString(context, "CAMERA_INDICATOR", "#FC6042");
     }
 
-    public void setCameraIndicatorSize(int value){
+    public void setCameraIndicatorSize(int value) {
         setInteger(context, "CAMERA_INDICATOR_SIZE", value);
     }
 
     public int getCameraIndicatorSize(){
         return getInteger(context, "CAMERA_INDICATOR_SIZE", 55);
+    }
+
+    public void setCameraIndicatorOpacity(int value){
+        setInteger(context, "CAMERA_INDICATOR_OPACITY", value);
+    }
+
+    public int getCameraIndicatorOpacity(){
+        return getInteger(context, "CAMERA_INDICATOR_OPACITY", 255);
     }
 
     public void setMicIndicatorEnabled(boolean value){
@@ -107,6 +115,14 @@ public class SharedPrefManager {
 
     public int getMicIndicatorSize(){
         return getInteger(context, "MIC_INDICATOR_SIZE", 55);
+    }
+
+    public void setMicIndicatorOpacity(int value){
+        setInteger(context, "MIC_INDICATOR_OPACITY", value);
+    }
+
+    public int getMicIndicatorOpacity(){
+        return getInteger(context, "MIC_INDICATOR_OPACITY", 255);
     }
 
     public void setNotificationEnabled(boolean value){
