@@ -328,27 +328,36 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Top Left" />
-
                 <RadioButton
                     android:id="@+id/rb_tr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Top Right" />
-
+                <RadioButton
+                    android:id="@+id/rb_ct"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Top Center"/>
                 <RadioButton
                     android:id="@+id/rb_br"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Bottom Right" />
-
                 <RadioButton
                     android:id="@+id/rb_bl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Bottom Left" />
+                <RadioButton
+                    android:id="@+id/rb_cb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Bottom Center"/>
 
             </RadioGroup>
         </androidx.constraintlayout.widget.ConstraintLayout>

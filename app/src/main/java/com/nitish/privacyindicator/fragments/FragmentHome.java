@@ -39,7 +39,7 @@ public class FragmentHome extends Fragment {
 
     private SwitchCompat mainSwitch, micSwitch, camSwitch, notifSwitch, vibSwitch;
     private RadioGroup radioGroup;
-    private RadioButton rb_tl, rb_tr, rb_bl, rb_br;
+    private RadioButton rb_tl, rb_tr, rb_bl, rb_br, rb_cb, rb_ct;
     private ImageView iv_cam, iv_mic;
     private SeekBar mic_size, cam_size;
     private TextView tv_cam_size, tv_mic_size;
@@ -53,7 +53,7 @@ public class FragmentHome extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_home,container, false);
+        root = inflater.inflate(R.layout.fragment_home, container, false);
 
         fetchData();
         fetchViews();
@@ -80,6 +80,8 @@ public class FragmentHome extends Fragment {
         rb_tr = root.findViewById(R.id.rb_tr);
         rb_br = root.findViewById(R.id.rb_br);
         rb_bl = root.findViewById(R.id.rb_bl);
+        rb_cb = root.findViewById(R.id.rb_cb);
+        rb_ct = root.findViewById(R.id.rb_ct);
         iv_cam = root.findViewById(R.id.iv_cam_color);
         iv_mic = root.findViewById(R.id.iv_mic_color);
         cam_size = root.findViewById(R.id.cam_size);
@@ -89,27 +91,27 @@ public class FragmentHome extends Fragment {
     }
 
     private void setupViews() {
-        if (sharedPrefManager.isCameraIndicatorEnabled()){
+        if (sharedPrefManager.isCameraIndicatorEnabled()) {
             camSwitch.setChecked(true);
-        }else {
+        } else {
             camSwitch.setChecked(false);
         }
 
-        if (sharedPrefManager.isMicIndicatorEnabled()){
+        if (sharedPrefManager.isMicIndicatorEnabled()) {
             micSwitch.setChecked(true);
-        }else {
+        } else {
             micSwitch.setChecked(false);
         }
 
-        if (sharedPrefManager.isVibrationEnabled()){
+        if (sharedPrefManager.isVibrationEnabled()) {
             vibSwitch.setChecked(true);
-        }else {
+        } else {
             vibSwitch.setChecked(false);
         }
 
-        if (sharedPrefManager.isNotificationEnabled()){
+        if (sharedPrefManager.isNotificationEnabled()) {
             notifSwitch.setChecked(true);
-        }else {
+        } else {
             notifSwitch.setChecked(false);
         }
 
@@ -123,32 +125,35 @@ public class FragmentHome extends Fragment {
         tv_mic_size.setText(sharedPrefManager.getMicIndicatorSize() + "");
     }
 
-    private void setViewTint(ImageView imageView, String hex){
+    private void setViewTint(ImageView imageView, String hex) {
         imageView.setColorFilter(Color.parseColor(hex), android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
-    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
+    //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-BottomCenter 5-TopCenter
     private void setLocationRadioButton() {
         int position = sharedPrefManager.getPosition();
-        if (position == 0){
+        if (position == 0) {
             rb_tr.setChecked(true);
-        }else if (position == 1){
+        } else if (position == 1) {
             rb_br.setChecked(true);
-        }else if (position == 2){
+        } else if (position == 2) {
             rb_bl.setChecked(true);
-        }else if (position == 3){
+        } else if (position == 3) {
             rb_tl.setChecked(true);
+        }else if (position == 4){
+            rb_cb.setChecked(true);
+        }else if (position == 5){
+            rb_ct.setChecked(true);
         }
     }
 
     private void setMainContentLayouts() {
-        if (isAccessibilityEnabled()){
+        if (isAccessibilityEnabled()) {
             mainSwitch.setChecked(true);
             mainSwitch.setText("Enabled");
             contentServiceEnabled.setVisibility(View.VISIBLE);
             contentServiceDisabled.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             mainSwitch.setChecked(false);
             mainSwitch.setText("Disabled");
             contentServiceEnabled.setVisibility(View.GONE);
@@ -178,10 +183,14 @@ public class FragmentHome extends Fragment {
                     sharedPrefManager.setPosition(0);
                 } else if (i == R.id.rb_br) {
                     sharedPrefManager.setPosition(1);
-                }else if (i == R.id.rb_bl) {
+                } else if (i == R.id.rb_bl) {
                     sharedPrefManager.setPosition(2);
-                }else if (i == R.id.rb_tl) {
+                } else if (i == R.id.rb_tl) {
                     sharedPrefManager.setPosition(3);
+                } else if (i == R.id.rb_cb) {
+                    sharedPrefManager.setPosition(4);
+                } else if (i == R.id.rb_ct) {
+                    sharedPrefManager.setPosition(5);
                 }
             }
         });
@@ -277,14 +286,14 @@ public class FragmentHome extends Fragment {
         final String ACCESSIBILITY_SERVICE = requireContext().getApplicationContext().getPackageName() + "/" + IndicatorService.class.getCanonicalName();
         boolean accessibilityFound = false;
         try {
-            accessibilityEnabled = Settings.Secure.getInt(getActivity().getContentResolver(),android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+            accessibilityEnabled = Settings.Secure.getInt(getActivity().getContentResolver(), android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
         } catch (Settings.SettingNotFoundException e) {
             Log.d(LOGTAG, "Error finding setting, default accessibility to not found: " + e.getMessage());
         }
 
         TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
 
-        if (accessibilityEnabled==1) {
+        if (accessibilityEnabled == 1) {
 
             String settingValue = Settings.Secure.getString(getActivity().getContentResolver(), Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
             Log.d(LOGTAG, "Setting: " + settingValue);
@@ -293,13 +302,12 @@ public class FragmentHome extends Fragment {
                 splitter.setString(settingValue);
                 while (splitter.hasNext()) {
                     String accessabilityService = splitter.next();
-                    if (accessabilityService.equalsIgnoreCase(ACCESSIBILITY_SERVICE)){
+                    if (accessabilityService.equalsIgnoreCase(ACCESSIBILITY_SERVICE)) {
                         return true;
                     }
                 }
             }
-        }
-        else {
+        } else {
             Log.d(LOGTAG, "***ACCESSIBILIY IS DISABLED***");
         }
         return accessibilityFound;
