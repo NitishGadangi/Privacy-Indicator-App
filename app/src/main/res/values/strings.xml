@@ -11,7 +11,7 @@
 If you use any of my projects or like what I\'m doing, please consider backing me with simple donations so that I can continue my open source work.</string>
     <string name="disclaimer_text"> The current build of the app is still in beta, and not extensively tested on various devices.\n\n
         <b>If you find any issue or would like to request a feature</b>
-        feel free to use the below button and open an issue on the GitHub Repo.</string>
+        feel free to use the below button and open an issue on the GitHub Repository.</string>
     <string name="menu_home">Home</string>
     <string name="menu_help">Help</string>
     <string name="built_by">Built in FOSS HACKS</string>
