@@ -125,20 +125,20 @@ public class FragmentHome extends Fragment {
         tv_mic_size.setText(sharedPrefManager.getMicIndicatorSize() + "");
     }
 
-    private void setViewTint(ImageView imageView, String hex) {
+    private void setViewTint(ImageView imageView, String hex){
         imageView.setColorFilter(Color.parseColor(hex), android.graphics.PorterDuff.Mode.SRC_IN);
     }
 
     //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-BottomCenter 5-TopCenter
     private void setLocationRadioButton() {
         int position = sharedPrefManager.getPosition();
-        if (position == 0) {
+        if (position == 0){
             rb_tr.setChecked(true);
-        } else if (position == 1) {
+        }else if (position == 1){
             rb_br.setChecked(true);
-        } else if (position == 2) {
+        }else if (position == 2){
             rb_bl.setChecked(true);
-        } else if (position == 3) {
+        }else if (position == 3){
             rb_tl.setChecked(true);
         }else if (position == 4){
             rb_cb.setChecked(true);
@@ -148,7 +148,7 @@ public class FragmentHome extends Fragment {
     }
 
     private void setMainContentLayouts() {
-        if (isAccessibilityEnabled()) {
+        if (isAccessibilityEnabled()){
             mainSwitch.setChecked(true);
             mainSwitch.setText("Enabled");
             contentServiceEnabled.setVisibility(View.VISIBLE);
@@ -178,14 +178,14 @@ public class FragmentHome extends Fragment {
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft
+                //0-TopRight 1-BotRight 2-BotLeft 3-TopLeft 4-TopCenter 5-BottomCenter
                 if (i == R.id.rb_tr) {
                     sharedPrefManager.setPosition(0);
                 } else if (i == R.id.rb_br) {
                     sharedPrefManager.setPosition(1);
-                } else if (i == R.id.rb_bl) {
+                }else if (i == R.id.rb_bl) {
                     sharedPrefManager.setPosition(2);
-                } else if (i == R.id.rb_tl) {
+                }else if (i == R.id.rb_tl) {
                     sharedPrefManager.setPosition(3);
                 } else if (i == R.id.rb_cb) {
                     sharedPrefManager.setPosition(4);

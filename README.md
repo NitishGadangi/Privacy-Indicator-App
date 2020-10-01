@@ -15,7 +15,7 @@
     <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/issues">Request Feature</a>
     .
    <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/README.md#contribution">Contribute</a>
-  <h4 align="center">Coming Soon to Playstore and FDroid</h4>
+  
   <h4 align="center">Check out the Demo Video 📽 on <a href="https://www.youtube.com/watch?v=kDc7TF9JSyc&feature=youtu.be">Youtube</a></h3>
   <h5 align="center">Made with ❤️ by <a href="https://nitishgadangi.github.io/">Nitish Gadangi</a></h3>
   <h5 align="center">Built in <a href="https://fossunited.org/hackathon">FOSS HACKS 2020</a></h3>
@@ -29,13 +29,14 @@
 </br>
 <hr/>
 
-<!-- 
+<!--
 ## FOSS HACKS 2020
 Privacy Indicators App is ideated and built in [FossHacks 2020](https://fossunited.org/hackathon). The [results for the Hackathon](https://forum.fossunited.org/t/foss-hack-2020-results/424) are out and Privacy Indicators App stood one among the Winning projects and Bagged prize money of ₹25000. Special thanks to [Team FOSS UNITED](https://fossunited.org/) for establishing such an amazing platform and uplifting Free and OpenSource software in India.
 
 ![Results](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/foss_hacks_results.jpg?raw=true)
 
-Also checkout other [projects which are into list of Winners](https://forum.fossunited.org/t/foss-hack-2020-results/424), trust me they are equally interesting and amazing 💯. -->
+Also checkout other [projects which are into list of Winners](https://forum.fossunited.org/t/foss-hack-2020-results/424), trust me they are equally interesting and amazing 💯. 
+-->
 
 ## Back Story
 **Recording Indicators in iOS14 :** With iOS 14, Apple is introducing a camera and microphone recording indicator in the status bar. It will appear as an orange dot above the signal bar. The **idea of a recording indicator is to alert users whenever the mic or camera are being used.** The feature will give users more control over data and privacy.
@@ -57,7 +58,9 @@ Privacy Indicators will bring the above Recording Indicators feature of iOS 14 t
 * Option to enable Haptic feedback when indicators appear
 * You can turn off any individual features in required
 
-*So install the app and will never have trust issues with the Camera and Mic usage 😉.*
+*So install the app and you will never have trust issues with the Camera and Mic usage 😉.*
+
+![demo gif](https://github.com/NitishGadangi/Privacy-Indicator-App/blob/master/screenshots/demo.gif?raw=true)
 
 > This Service/App doesn\'t have any permission to use the internet or your
 > device\'s camera, microphone, or any other Hardware. And will NOT
