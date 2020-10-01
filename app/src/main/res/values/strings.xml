@@ -17,4 +17,13 @@ If you use any of my projects or like what I\'m doing, please consider backing m
     <string name="built_by">Built in FOSS HACKS</string>
     <string name="notification_alert_summary">You will get an active notification on the status bar while an app is using your camera or microphone.</string>
     <string name="vibration_alert_summary">you will get a haptic feedback every time any app starts using camera or microphone.</string>
+    <string name="report_bug_or_suggest_a_feature">Report Bug🐞 or Suggest a Feature</string>
+    <string name="buy_me_a_coffee">Buy Me A Coffee ☕</string>
+    <string name="rate_this_app_on_playstore">Rate this App on Playstore ⭐⭐⭐⭐⭐</string>
+    <string name="open_source"><![CDATA[Open Source <>]]></string>
+    <string name="support">Support</string>
+    <string name="disclaimer">Disclaimer</string>
+    <string name="privacy_indicator_app_help">Privacy Indicator App Help</string>
+    <string name="disabled">Disabled</string>
+    <string name="privacy_indicators">Privacy Indicators 🔍</string>
 </resources>

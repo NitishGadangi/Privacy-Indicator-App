@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -27,7 +25,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/logo" />
+                android:src="@drawable/logo"
+                android:contentDescription="@string/privacy_indicator_app_help" />
 
             <TextView
                 android:id="@+id/tv_des"
@@ -67,12 +66,12 @@
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_caution"
                         android:drawablePadding="8dp"
-                        android:text="Disclaimer"
+                        android:text="@string/disclaimer"
                         android:textColor="@color/blackPrimary"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/ic_caution" />
 
                     <TextView
                         android:id="@+id/textView15"
@@ -89,10 +88,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/cam"
-                        android:text="Report Bug or Suggest a Feature"
+                        android:text="@string/report_bug_or_suggest_a_feature"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
-                        android:textSize="17sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -120,12 +119,12 @@
                         android:id="@+id/textView12"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_heart"
                         android:drawablePadding="8dp"
-                        android:text="Support"
+                        android:text="@string/support"
                         android:textColor="@color/blackPrimary"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        app:drawableStartCompat="@drawable/ic_heart" />
 
                     <TextView
                         android:id="@+id/textView13"
@@ -142,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/mic"
-                        android:text="Buy Me A Coffee"
+                        android:text="@string/buy_me_a_coffee"
                         android:textColor="@android:color/white"
                         android:textSize="17sp" />
 
@@ -152,9 +151,21 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/playstore"
-                        android:text="Rate this App on Playstore"
+                        android:text="@string/rate_this_app_on_playstore"
                         android:textColor="@android:color/white"
                         android:textSize="17sp" />
+
+                    <Button
+                        android:id="@+id/btn_github"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/cam"
+                        android:text="@string/open_source"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="17sp" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
