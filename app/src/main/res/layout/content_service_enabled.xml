@@ -92,7 +92,43 @@
                 android:layout_marginEnd="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView9"
+                app:layout_constraintTop_toBottomOf="@id/textView9"/>
+
+            <TextView
+                android:id="@+id/cam_indicator_opacity_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Indicator Opacity"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cam_size" />
+
+            <TextView
+                android:id="@+id/tv_cam_opacity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cam_size" />
+
+            <SeekBar
+                android:id="@+id/cam_opacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:min="0"
+                android:max="255"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cam_indicator_opacity_tv"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -186,7 +222,43 @@
                 android:layout_marginEnd="2dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_mic_size"
+                app:layout_constraintTop_toBottomOf="@id/tv_mic_size"/>
+
+            <TextView
+                android:id="@+id/mic_indicator_opacity_tv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Indicator Opacity"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mic_size" />
+
+            <TextView
+                android:id="@+id/tv_mic_opacity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="20"
+                android:textColor="@color/blackSecondary"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mic_size" />
+
+            <SeekBar
+                android:id="@+id/mic_opacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:min="0"
+                android:max="255"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/mic_indicator_opacity_tv"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

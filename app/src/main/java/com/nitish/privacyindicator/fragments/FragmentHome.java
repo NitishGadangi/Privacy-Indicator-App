@@ -41,8 +41,8 @@ public class FragmentHome extends Fragment {
     private RadioGroup radioGroup;
     private RadioButton rb_tc, rb_tl, rb_tr, rb_bc, rb_bl, rb_br;
     private ImageView iv_cam, iv_mic;
-    private SeekBar mic_size, cam_size;
-    private TextView tv_cam_size, tv_mic_size;
+    private SeekBar mic_size, mic_opacity, cam_size, cam_opacity;
+    private TextView tv_cam_size, tv_mic_size, tv_cam_opacity, tv_mic_opacity;
 
     @Override
     public void onResume() {
@@ -85,9 +85,13 @@ public class FragmentHome extends Fragment {
         iv_cam = root.findViewById(R.id.iv_cam_color);
         iv_mic = root.findViewById(R.id.iv_mic_color);
         cam_size = root.findViewById(R.id.cam_size);
+        cam_opacity = root.findViewById(R.id.cam_opacity);
         mic_size = root.findViewById(R.id.mic_size);
+        mic_opacity = root.findViewById(R.id.mic_opacity);
         tv_cam_size = root.findViewById(R.id.tv_cam_size);
+        tv_cam_opacity = root.findViewById(R.id.tv_cam_opacity);
         tv_mic_size = root.findViewById(R.id.tv_mic_size);
+        tv_mic_opacity = root.findViewById(R.id.tv_mic_opacity);
     }
 
     private void setupViews() {
@@ -121,8 +125,15 @@ public class FragmentHome extends Fragment {
 
         cam_size.setProgress(sharedPrefManager.getCameraIndicatorSize());
         tv_cam_size.setText(sharedPrefManager.getCameraIndicatorSize() + "");
+
+        cam_opacity.setProgress(sharedPrefManager.getCameraIndicatorOpacity());
+        tv_cam_opacity.setText(sharedPrefManager.getCameraIndicatorOpacity() + "");
+
         mic_size.setProgress(sharedPrefManager.getMicIndicatorSize());
         tv_mic_size.setText(sharedPrefManager.getMicIndicatorSize() + "");
+
+        mic_opacity.setProgress(sharedPrefManager.getMicIndicatorOpacity());
+        tv_mic_opacity.setText(sharedPrefManager.getMicIndicatorOpacity() + "");
     }
 
     private void setViewTint(ImageView imageView, String hex){
@@ -252,11 +263,47 @@ public class FragmentHome extends Fragment {
             }
         });
 
+        cam_opacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                sharedPrefManager.setCameraIndicatorOpacity(i);
+                tv_cam_opacity.setText(i + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
         mic_size.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 sharedPrefManager.setMicIndicatorSize(i);
                 tv_mic_size.setText(i + "");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        mic_opacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                sharedPrefManager.setMicIndicatorOpacity(i);
+                tv_mic_opacity.setText(i + "");
             }
 
             @Override

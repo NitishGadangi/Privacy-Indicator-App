@@ -199,10 +199,17 @@ public class IndicatorService extends AccessibilityService {
         if (sharedPrefManager.isMicIndicatorEnabled()){
             updateLayoutGravity();
             updateMicIndicatorSize();
+            updateMicIndicatorOpacity();
             setupDotTints();
             iv_mic.setVisibility(View.VISIBLE);
 //            upScaleView(iv_mic);
         }
+    }
+
+    private void updateMicIndicatorOpacity() {
+        int opacity = sharedPrefManager.getMicIndicatorOpacity();
+        iv_mic.requestLayout();
+        iv_mic.setImageAlpha(opacity);;
     }
 
     private void updateMicIndicatorSize() {
@@ -221,10 +228,17 @@ public class IndicatorService extends AccessibilityService {
         if (sharedPrefManager.isCameraIndicatorEnabled()){
             updateLayoutGravity();
             updateCamIndicatorSize();
+            updateCamIndicatorOpacity();
             setupDotTints();
             iv_cam.setVisibility(View.VISIBLE);
 //            upScaleView(iv_cam);
         }
+    }
+
+    private void updateCamIndicatorOpacity() {
+        int opacity = sharedPrefManager.getCameraIndicatorOpacity();
+        iv_cam.requestLayout();
+        iv_cam.setImageAlpha(opacity);;
     }
 
     private void updateCamIndicatorSize() {
