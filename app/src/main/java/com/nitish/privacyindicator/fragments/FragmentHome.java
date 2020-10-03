@@ -1,5 +1,7 @@
 package com.nitish.privacyindicator.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,12 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +26,8 @@ import com.nitish.privacyindicator.SharedPrefManager;
 import com.nitish.privacyindicator.services.IndicatorService;
 
 public class FragmentHome extends Fragment {
+
+    private static int LAUNCHED_ACCESSIBILITY_SETTINGS = 1;
 
     //Root Views
     private View root;
@@ -177,8 +176,10 @@ public class FragmentHome extends Fragment {
         mainSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showGuidanceToast();
+
                 Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-                startActivity(intent);
+                startActivityForResult(intent, LAUNCHED_ACCESSIBILITY_SETTINGS);
             }
         });
 
@@ -316,6 +317,15 @@ public class FragmentHome extends Fragment {
 
             }
         });
+    }
+
+    private void showGuidanceToast() {
+        Context context = getActivity().getApplicationContext();
+        CharSequence text = "Please enable \"Privacy Indicators\" under downloaded services section.";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
