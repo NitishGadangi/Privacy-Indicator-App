@@ -1,6 +1,5 @@
 package com.nitish.privacyindicator.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,12 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
-
 import com.github.dhaval2404.colorpicker.ColorPickerDialog;
 import com.github.dhaval2404.colorpicker.listener.ColorListener;
 import com.github.dhaval2404.colorpicker.model.ColorShape;
@@ -26,8 +23,6 @@ import com.nitish.privacyindicator.SharedPrefManager;
 import com.nitish.privacyindicator.services.IndicatorService;
 
 public class FragmentHome extends Fragment {
-
-    private static int LAUNCHED_ACCESSIBILITY_SETTINGS = 1;
 
     //Root Views
     private View root;
@@ -179,7 +174,7 @@ public class FragmentHome extends Fragment {
                 showGuidanceToast();
 
                 Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-                startActivityForResult(intent, LAUNCHED_ACCESSIBILITY_SETTINGS);
+                startActivity(intent);
             }
         });
 
