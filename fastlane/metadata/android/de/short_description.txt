@@ -1,0 +1,1 @@
+Erhalte eine Benachrichtigung wann immer eine App auf Kamera/Mikrophone zugreift
