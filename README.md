@@ -18,7 +18,7 @@
   
   <h4 align="center">Check out the Demo Video 📽 on <a href="https://www.youtube.com/watch?v=kDc7TF9JSyc&feature=youtu.be">Youtube</a></h3>
   <h5 align="center">Made with ❤️ by <a href="https://nitishgadangi.github.io/">Nitish Gadangi</a></h3>
-  <h5 align="center">Built in <a href="https://fossunited.org/hackathon">FOSS HACKS 2020</a></h3>
+  <h5 align="center">Winner 🏆 <a href="https://fossunited.org/hackathon">FOSS HACKS 2020</a></h3>
 <p align="center">
   <a href='https://nitishgadangi.github.io/?buy_me_coffee' target='_blank'>
     <img height='36' style='border:0px;height:36px;' src='https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png' border='0' alt='Buy Me a Coffee' />
