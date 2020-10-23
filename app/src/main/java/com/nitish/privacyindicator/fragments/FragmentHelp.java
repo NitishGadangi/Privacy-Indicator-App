@@ -50,7 +50,8 @@ public class FragmentHelp extends Fragment {
         btn_cofee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openBrowser("https://nitishgadangi.github.io/?buy_me_coffee/");
+//                openBrowser("https://nitishgadangi.github.io/?buy_me_coffee/");
+                openBrowser("https://github.com/NitishGadangi/Privacy-Indicator-App/");
             }
         });
         btn_playstore.setOnClickListener(new View.OnClickListener() {

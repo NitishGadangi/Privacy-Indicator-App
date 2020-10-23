@@ -143,6 +143,7 @@
                         android:layout_marginTop="8dp"
                         android:backgroundTint="@color/mic"
                         android:text="Buy Me A Coffee"
+                        android:visibility="visible"
                         android:textColor="@android:color/white"
                         android:textSize="17sp" />
 
