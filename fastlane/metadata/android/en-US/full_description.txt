@@ -1,0 +1,7 @@
+<p><i>Privacy Indicator</i> will bring the above Recording Indicators feature of iOS 14 to Android (With more extra features and Customizations). It notifies you every time an app or a service uses your device’s camera or microphone.</p><ul>
+<li>Get Notified every time any third-party app is accessing your Camera.</li>
+<li>Get Notified every time any app is accessing your Microphone.</li>
+<li>You can customize indicator color and its position</li>
+<li>Option to enable Haptic feedback when indicators appear</li>
+<li>You can turn off any individual features in required</li></ul>
+<p>More to come. Note that for ''Privacy Indicator'' to work, you will need to enable its service from the Accessibility Settings. The Service then keeps running in the background and automatically starts even if you restart the mobile.</p>
