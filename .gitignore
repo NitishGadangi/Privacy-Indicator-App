@@ -8,3 +8,5 @@
 .externalNativeBuild
 .cxx
 *.apk
+.idea/gradle.xml
+.idea/misc.xml
