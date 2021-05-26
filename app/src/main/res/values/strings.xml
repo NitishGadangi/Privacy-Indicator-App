@@ -6,15 +6,37 @@
     </string>
     <string name="service_summary">Get notified every time a third-party app uses camera or microphone</string>
     <string name="made_by">Made with ❤ by Nitish</string>
-    <string name="app_description">Get notified every time a third-party app or a service uses camera or microphone. Inspired from ios14 recording indicators.</string>
-    <string name="support_text"> I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
-If you use any of my projects or like what I\'m doing, please consider backing me with simple donations so that I can continue my open source work.</string>
-    <string name="disclaimer_text"> The current build of the app is still in beta, and not extensively tested on various devices.\n\n
-        <b>If you find any issue or would like to request a feature</b>
-        feel free to use the below button and open an issue on the GitHub Repository.</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_help">Help</string>
-    <string name="built_by">Built in FOSS HACKS</string>
+    <string name="built_by">Built in FOSS HACKS 2020</string>
+
     <string name="notification_alert_summary">You will get an active notification on the status bar while an app is using your camera or microphone.</string>
-    <string name="vibration_alert_summary">you will get a haptic feedback every time any app starts using camera or microphone.</string>
+
+    <string name="indicators_disabled_description">Click on the above Switch and Turn on the Privacy Indicator in the Accessibility Settings</string>
+    <string name="privacy_indicators_disabled_title">Privacy Indicators are disabled</string>
+
+    <string name="camera_indicator_title">Camera Indicator</string>
+    <string name="camera_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="microphone_indicator_title">Microphone Indicator</string>
+    <string name="microphone_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="location_indicator_title">Location Indicator</string>
+    <string name="location_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="vibration_alert_title">Vibration Alert</string>
+    <string name="vibration_alert_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="notification_alert_title">Notification Alert</string>
+    <string name="notification_alert_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="customization_center_title">Customize Indicators</string>
+    <string name="customization_center_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="indicator_logs_title">Indicator Logs</string>
+    <string name="indicator_logs_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="share_title">Share with your friends</string>
+    <string name="share_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+
+    <string name="report_issue_title">Report Issue or Request Feature</string>
+    <string name="report_issue_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
 </resources>

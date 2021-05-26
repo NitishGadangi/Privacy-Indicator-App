@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#432FBF</color>
-    <color name="colorPrimaryDark">#432FBF</color>
-    <color name="colorAccent">#432FBF</color>
+    <color name="colorPrimaryDark">#FFF</color>
+    <color name="colorAccent">#1E80E9</color>
 
     <color name="blackPrimary">#000000</color>
     <color name="blackSecondary">#3e3e3e</color>
 
     <color name="mic">#FFA840</color>
     <color name="cam">#FC6042</color>
+
+    <color name="grey100">#F5F5F5</color>
 
     <color name="playstore">#88B131</color>
 

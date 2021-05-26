@@ -1,28 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="2dp">
 
-    <ImageView
-        android:id="@+id/iv_cam"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_weight="1"
-        android:padding="4dp"
-        android:src="@drawable/ic_dot"
-        android:tint="@color/cam"
-        tools:ignore="UseAppTint"/>
 
-    <ImageView
-        android:id="@+id/iv_mic"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_indicators"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:padding="4dp"
-        android:src="@drawable/ic_dot"
-        android:tint="@color/mic"
-        tools:ignore="UseAppTint" />
-</LinearLayout>
+        app:cardCornerRadius="13dp">
+
+        <LinearLayout
+            android:id="@+id/ll_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/green_200">
+
+            <ImageView
+                android:id="@+id/iv_cam"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/camera_indicator2"
+                android:tint="@color/black"
+                tools:ignore="UseAppTint"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/iv_mic"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/microphone_indicator2"
+                android:tint="@color/black"
+                tools:ignore="UseAppTint"
+                android:visibility="visible"/>
+
+            <ImageView
+                android:id="@+id/iv_loc"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:padding="4dp"
+                android:src="@drawable/location_indicator"
+                android:tint="@color/black"
+                tools:ignore="UseAppTint"
+                android:visibility="visible"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>
