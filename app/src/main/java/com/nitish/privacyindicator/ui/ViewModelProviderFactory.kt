@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nitish.privacyindicator.repository.SharedPrefManager
+import com.nitish.privacyindicator.ui.home.HomeViewModel
 
 class ViewModelProviderFactory(
         private val application: Application,

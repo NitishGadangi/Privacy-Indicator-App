@@ -1,9 +1,9 @@
 package com.nitish.privacyindicator.models
 
 enum class IndicatorSize(val size: Int) {
-    XS(20),
-    S(30),
-    M(55),
+    XS(45),
+    S(55),
+    M(65),
     L(80),
     XL(100)
 }

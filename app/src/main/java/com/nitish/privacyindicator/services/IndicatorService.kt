@@ -7,7 +7,6 @@ import android.app.PendingIntent
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.PixelFormat
-import android.graphics.PorterDuff
 import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraManager.AvailabilityCallback
 import android.media.AudioManager
@@ -16,23 +15,21 @@ import android.media.AudioRecordingConfiguration
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
-import android.widget.FrameLayout
-import android.widget.ImageView
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.nitish.privacyindicator.R
 import com.nitish.privacyindicator.databinding.IndicatorsLayoutBinding
+import com.nitish.privacyindicator.helpers.setViewTint
 import com.nitish.privacyindicator.helpers.updateOpacity
 import com.nitish.privacyindicator.helpers.updateSize
 import com.nitish.privacyindicator.repository.SharedPrefManager
-import com.nitish.privacyindicator.ui.HomeActivity
+import com.nitish.privacyindicator.ui.home.HomeActivity
 
 class IndicatorService : AccessibilityService() {
     private lateinit var binding: IndicatorsLayoutBinding
@@ -121,11 +118,16 @@ class IndicatorService : AccessibilityService() {
 
     private fun setUpInnerViews() {
         setViewColors()
-        binding.ivCam.postDelayed({
+        showInitialAnimation(true)
+    }
+
+    private fun showInitialAnimation(isEnabled: Boolean) {
+        val delay = if (isEnabled) 1000 else 0
+        binding.ivLoc.postDelayed({
+            binding.ivLoc.visibility = View.GONE
             binding.ivCam.visibility = View.GONE
             binding.ivMic.visibility = View.GONE
-            binding.ivLoc.visibility = View.GONE
-        }, 1000)
+        }, delay.toLong())
     }
 
     private fun createOverlay() {
@@ -133,7 +135,7 @@ class IndicatorService : AccessibilityService() {
         layoutParams = WindowManager.LayoutParams()
         layoutParams.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
         layoutParams.format = PixelFormat.TRANSLUCENT
-        layoutParams.flags = layoutParams!!.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+        layoutParams.flags = layoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
         layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
         layoutParams.gravity = layoutGravity
@@ -185,7 +187,7 @@ class IndicatorService : AccessibilityService() {
         binding.ivLoc.visibility = View.GONE
     }
 
-    private fun updateIndicatorProperties(){
+    private fun updateIndicatorProperties() {
         updateLayoutGravity()
         updateIndicatorsSize()
         updateIndicatorsOpacity()
@@ -195,14 +197,10 @@ class IndicatorService : AccessibilityService() {
     private fun setViewColors() {
         val dotsTint = sharedPrefManager.indicatorColor
         val indicatorBackground = sharedPrefManager.indicatorBackgroundColor
-        setViewTint(binding.ivCam, dotsTint)
-        setViewTint(binding.ivMic, dotsTint)
-        setViewTint(binding.ivLoc, dotsTint)
+        binding.ivCam.setViewTint(dotsTint)
+        binding.ivMic.setViewTint(dotsTint)
+        binding.ivLoc.setViewTint(dotsTint)
         binding.llBackground.setBackgroundColor(Color.parseColor(indicatorBackground))
-    }
-
-    private fun setViewTint(imageView: ImageView, hex: String) {
-        imageView.setColorFilter(Color.parseColor(hex), PorterDuff.Mode.SRC_IN)
     }
 
     private fun updateIndicatorsOpacity() {
@@ -211,7 +209,7 @@ class IndicatorService : AccessibilityService() {
 
     private fun updateIndicatorsSize() {
         val size = sharedPrefManager.indicatorSize.size
-        binding.cvIndicators.radius = (size/2).toFloat()
+        binding.cvIndicators.radius = (size / 2).toFloat()
         binding.ivCam.updateSize(size)
         binding.ivMic.updateSize(size)
         binding.ivLoc.updateSize(size)

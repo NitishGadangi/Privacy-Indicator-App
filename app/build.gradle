@@ -12,6 +12,8 @@ android {
         versionCode 5
         versionName "1.2.1"
 
+        buildConfigField "boolean", "IN_APP_TESTING_TOGGLE", "${project.inAppTestingToggle}"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -48,6 +50,9 @@ dependencies {
 
     //ColorPicker
     implementation 'com.github.dhaval2404:colorpicker:2.0'
+
+    //Multi Switch Button
+    implementation 'lib.kingja.switchbutton:switchbutton:1.1.8'
 
 
 

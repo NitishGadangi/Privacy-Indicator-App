@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+        android:alpha="0.8"
         app:cardCornerRadius="13dp">
 
         <LinearLayout
@@ -20,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="@color/green_200">
+            android:background="@color/colorAccent">
 
             <ImageView
                 android:id="@+id/iv_cam"
@@ -29,7 +30,7 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/camera_indicator2"
-                android:tint="@color/black"
+                android:tint="@color/white"
                 tools:ignore="UseAppTint"
                 android:visibility="visible"/>
 
@@ -40,7 +41,7 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/microphone_indicator2"
-                android:tint="@color/black"
+                android:tint="@color/white"
                 tools:ignore="UseAppTint"
                 android:visibility="visible"/>
 
@@ -51,7 +52,7 @@
                 android:layout_weight="1"
                 android:padding="4dp"
                 android:src="@drawable/location_indicator"
-                android:tint="@color/black"
+                android:tint="@color/white"
                 tools:ignore="UseAppTint"
                 android:visibility="visible"/>
         </LinearLayout>

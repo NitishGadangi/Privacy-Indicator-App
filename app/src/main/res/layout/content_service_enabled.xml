@@ -19,9 +19,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="General"
-                android:fontFamily="@font/senbold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/SubtitleText"/>
 
             <ImageView
                 android:id="@+id/imgCamera"
@@ -49,19 +49,16 @@
                     android:id="@+id/tvCamTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/camera_indicator_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvCamDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/camera_indicator_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -98,19 +95,16 @@
                     android:id="@+id/tvMicTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/microphone_indicator_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvMicDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/microphone_indicator_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -147,19 +141,16 @@
                     android:id="@+id/tvLocationTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/location_indicator_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvLocationDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/location_indicator_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -184,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:text="Customization"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/senbold"
+                style="@style/SubtitleText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/separator1" />
 
@@ -214,19 +205,16 @@
                     android:id="@+id/tvVibTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/vibration_alert_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvVibDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/vibration_alert_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -263,19 +251,16 @@
                     android:id="@+id/tvNotifTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/notification_alert_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvNotifDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/notification_alert_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
@@ -316,19 +301,16 @@
                     android:id="@+id/tvSettingsTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/customization_center_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText"/>
 
                 <TextView
                     android:id="@+id/tvSettingsDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/customization_center_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <ImageView
@@ -355,7 +337,7 @@
                 android:layout_height="wrap_content"
                 android:text="Logs"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/senbold"
+                style="@style/SubtitleText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/separator2" />
 
@@ -388,19 +370,16 @@
                     android:id="@+id/tvLogsTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/indicator_logs_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvLogsDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/indicator_logs_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <ImageView
@@ -429,7 +408,7 @@
                 android:layout_height="wrap_content"
                 android:text="Support"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/senbold"
+                style="@style/SubtitleText"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/separator3" />
 
@@ -462,19 +441,16 @@
                     android:id="@+id/tvShareTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/share_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvShareDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/share_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <ImageView
@@ -517,19 +493,16 @@
                     android:id="@+id/tvIssueTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/senbold"
                     android:text="@string/report_issue_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp" />
+                    style="@style/HeadingText" />
 
                 <TextView
                     android:id="@+id/tvIssueDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:fontFamily="@font/senregular"
                     android:text="@string/report_issue_description"
-                    android:textSize="12sp" />
+                    style="@style/SubHeadingText" />
             </LinearLayout>
 
             <ImageView

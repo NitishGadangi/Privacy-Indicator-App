@@ -2,8 +2,11 @@ package com.nitish.privacyindicator.helpers
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.view.View
+import android.widget.ImageView
 import com.nitish.privacyindicator.models.IndicatorOpacity
 
 
@@ -30,8 +33,8 @@ fun View.updateSize(size: Int){
     layoutParams.width = size
 }
 
-fun View.setViewTint(hexColor: String) {
-
+fun ImageView.setViewTint(hexColor: String) {
+    setColorFilter(Color.parseColor(hexColor), PorterDuff.Mode.SRC_IN)
 }
 
 fun View.updateOpacity(opacity: Float) {

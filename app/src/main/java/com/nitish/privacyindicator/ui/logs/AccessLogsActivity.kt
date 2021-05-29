@@ -1,4 +1,4 @@
-package com.nitish.privacyindicator.ui
+package com.nitish.privacyindicator.ui.logs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

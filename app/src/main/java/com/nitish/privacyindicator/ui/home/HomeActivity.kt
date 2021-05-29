@@ -1,7 +1,8 @@
-package com.nitish.privacyindicator.ui
+package com.nitish.privacyindicator.ui.home
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.Settings
 import android.provider.Settings.SettingNotFoundException
@@ -16,8 +17,11 @@ import com.nitish.privacyindicator.databinding.ContentServiceEnabledBinding
 import com.nitish.privacyindicator.helpers.goToActivity
 import com.nitish.privacyindicator.helpers.openBrowser
 import com.nitish.privacyindicator.helpers.openSharingScreen
+import com.nitish.privacyindicator.helpers.setViewTint
 import com.nitish.privacyindicator.services.IndicatorService
 import com.nitish.privacyindicator.repository.SharedPrefManager
+import com.nitish.privacyindicator.ui.logs.AccessLogsActivity
+import com.nitish.privacyindicator.ui.ViewModelProviderFactory
 
 
 class HomeActivity : AppCompatActivity() {
@@ -28,57 +32,6 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var viewModel: HomeViewModel
 
-    override fun onResume() {
-        super.onResume()
-        if (isAccessibilityServiceEnabled(applicationContext)) serviceEnabled() else serviceDisabled()
-    }
-
-    private fun isAccessibilityServiceEnabled(mContext: Context): Boolean {
-        val APPLICATION_ID = BuildConfig.APPLICATION_ID
-        val ACCESSIBILITY_SERVICE = IndicatorService::class.java.canonicalName
-        var accessibilityEnabled = 0
-        val service = "$APPLICATION_ID/$ACCESSIBILITY_SERVICE"
-        try {
-            accessibilityEnabled = Settings.Secure.getInt(
-                    mContext.applicationContext.contentResolver,
-                    Settings.Secure.ACCESSIBILITY_ENABLED)
-        } catch (e: SettingNotFoundException) {
-
-        }
-        val mStringColonSplitter = SimpleStringSplitter(':')
-        if (accessibilityEnabled == 1) {
-            val settingValue = Settings.Secure.getString(
-                    mContext.applicationContext.contentResolver,
-                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
-            if (settingValue != null) {
-                mStringColonSplitter.setString(settingValue)
-                while (mStringColonSplitter.hasNext()) {
-                    val accessibilityService = mStringColonSplitter.next()
-                    if (accessibilityService.equals(service, ignoreCase = true)) {
-                        return true
-                    }
-                }
-            }
-        }
-        return false
-    }
-
-    private fun serviceEnabled() {
-        binding.mainSwitch.isChecked = true
-        binding.mainSwitch.text = "Enabled"
-        binding.contentServiceDisabled.root.visibility = View.GONE
-        serviceEnabledBinding.root.visibility = View.VISIBLE
-        binding.contentCredits.root.visibility = View.VISIBLE
-    }
-
-    private fun serviceDisabled() {
-        binding.mainSwitch.isChecked = false
-        binding.mainSwitch.text = "Disabled"
-        binding.contentServiceDisabled.root.visibility = View.VISIBLE
-        serviceEnabledBinding.root.visibility = View.GONE
-        binding.contentCredits.root.visibility = View.GONE
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -88,6 +41,7 @@ class HomeActivity : AppCompatActivity() {
 
         val viewModelProviderFactory = ViewModelProviderFactory(application, SharedPrefManager.getInstance(applicationContext))
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
+
         setUpObservers()
         setUpListeners()
 
@@ -96,14 +50,17 @@ class HomeActivity : AppCompatActivity() {
     private fun setUpObservers() {
         viewModel.cameraIndicatorStatus.observe(this, {
             serviceEnabledBinding.switchCamera.isChecked = it
+            binding.indicatorsLayout.ivCam.visibility = if(it==true) View.VISIBLE else View.GONE
         })
 
         viewModel.microphoneIndicatorStatus.observe(this, {
             serviceEnabledBinding.switchMic.isChecked = it
+            binding.indicatorsLayout.ivMic.visibility = if(it==true) View.VISIBLE else View.GONE
         })
 
         viewModel.locationIndicatorStatus.observe(this, {
             serviceEnabledBinding.switchLocation.isChecked = it
+            binding.indicatorsLayout.ivLoc.visibility = if(it==true) View.VISIBLE else View.GONE
         })
 
         viewModel.vibrationAlertStatus.observe(this, {
@@ -112,6 +69,16 @@ class HomeActivity : AppCompatActivity() {
 
         viewModel.notificationAlertStatus.observe(this, {
             serviceEnabledBinding.switchNotification.isChecked = it
+        })
+
+        viewModel.indicatorBackgroundColor.observe(this, {
+            binding.indicatorsLayout.llBackground.setBackgroundColor(Color.parseColor(it))
+        })
+
+        viewModel.indicatorForegroundColor.observe(this, {
+            binding.indicatorsLayout.ivCam.setViewTint(it)
+            binding.indicatorsLayout.ivMic.setViewTint(it)
+            binding.indicatorsLayout.ivLoc.setViewTint(it)
         })
     }
 
@@ -203,5 +170,59 @@ class HomeActivity : AppCompatActivity() {
 
     private fun openAccessLogsScreen() {
         this.goToActivity(AccessLogsActivity::class.java)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (isAccessibilityServiceEnabled(applicationContext)) serviceEnabled() else serviceDisabled()
+    }
+
+    private fun isAccessibilityServiceEnabled(mContext: Context): Boolean {
+        if(BuildConfig.IN_APP_TESTING_TOGGLE) return true
+        val APPLICATION_ID = BuildConfig.APPLICATION_ID
+        val ACCESSIBILITY_SERVICE = IndicatorService::class.java.canonicalName
+        var accessibilityEnabled = 0
+        val service = "$APPLICATION_ID/$ACCESSIBILITY_SERVICE"
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(
+                    mContext.applicationContext.contentResolver,
+                    Settings.Secure.ACCESSIBILITY_ENABLED)
+        } catch (e: SettingNotFoundException) {
+
+        }
+        val mStringColonSplitter = SimpleStringSplitter(':')
+        if (accessibilityEnabled == 1) {
+            val settingValue = Settings.Secure.getString(
+                    mContext.applicationContext.contentResolver,
+                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
+            if (settingValue != null) {
+                mStringColonSplitter.setString(settingValue)
+                while (mStringColonSplitter.hasNext()) {
+                    val accessibilityService = mStringColonSplitter.next()
+                    if (accessibilityService.equals(service, ignoreCase = true)) {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+
+    private fun serviceEnabled() {
+        binding.mainSwitch.isChecked = true
+        binding.mainSwitch.text = "Enabled"
+        binding.contentServiceDisabled.root.visibility = View.GONE
+        serviceEnabledBinding.root.visibility = View.VISIBLE
+        binding.contentCredits.root.visibility = View.VISIBLE
+        binding.indicatorsLayout.root.visibility = View.VISIBLE
+    }
+
+    private fun serviceDisabled() {
+        binding.mainSwitch.isChecked = false
+        binding.mainSwitch.text = "Disabled"
+        binding.contentServiceDisabled.root.visibility = View.VISIBLE
+        serviceEnabledBinding.root.visibility = View.GONE
+        binding.contentCredits.root.visibility = View.GONE
+        binding.indicatorsLayout.root.visibility = View.GONE
     }
 }
