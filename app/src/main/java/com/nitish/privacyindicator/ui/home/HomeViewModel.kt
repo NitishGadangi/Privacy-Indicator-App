@@ -85,6 +85,7 @@ class HomeViewModel(application: Application,
         const val GITHUB_REPO = "https://github.com/NitishGadangi/Privacy-Indicator-App/"
         const val GITHUB_PROFILE = "https://github.com/NitishGadangi"
         const val LINKEDIN = "https://www.linkedin.com/in/nitish-gadangi/"
+        const val FOSSHACKS = "https://forum.fossunited.org/t/foss-hack-2020-results/424"
         const val SHARING_TEXT = "Checkout this app which provides you the Privacy Features of iOS 14 and Android 12 on your device. https://play.google.com/store/apps/details?id=com.nitish.privacyindicator"
     }
 

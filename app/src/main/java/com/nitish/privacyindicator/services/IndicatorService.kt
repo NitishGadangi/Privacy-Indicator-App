@@ -1,14 +1,19 @@
 package com.nitish.privacyindicator.services
 
+import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.PixelFormat
 import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraManager.AvailabilityCallback
+import android.location.GnssStatus
+import android.location.LocationListener
+import android.location.LocationManager
 import android.media.AudioManager
 import android.media.AudioManager.AudioRecordingCallback
 import android.media.AudioRecordingConfiguration
@@ -21,6 +26,7 @@ import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.nitish.privacyindicator.R
@@ -35,6 +41,8 @@ class IndicatorService : AccessibilityService() {
     private lateinit var binding: IndicatorsLayoutBinding
     private var cameraManager: CameraManager? = null
     private var cameraCallback: AvailabilityCallback? = null
+    private var locationManager: LocationManager? =null
+    private var locationCallback: GnssStatus.Callback? = null
     private var audioManager: AudioManager? = null
     private var micCallback: AudioRecordingCallback? = null
     private lateinit var sharedPrefManager: SharedPrefManager
@@ -46,6 +54,7 @@ class IndicatorService : AccessibilityService() {
     private val notificationID = 256
     private var isCameraOn = false
     private var isMicOn = false
+    private var isLocationOn = false
 
 
     override fun onServiceConnected() {
@@ -62,8 +71,19 @@ class IndicatorService : AccessibilityService() {
     private fun startCallBacks() {
         if (cameraManager == null) cameraManager = getSystemService(CAMERA_SERVICE) as CameraManager
         cameraManager!!.registerAvailabilityCallback(getCameraCallback(), null)
+
         if (audioManager == null) audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         audioManager!!.registerAudioRecordingCallback(getMicCallback(), null)
+
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//            if(locationManager==null) locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+//            locationManager!!.registerGnssStatusCallback(getLocationCallback())
+//            val locationListener = LocationListener {  }
+//            locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 8.4f,locationListener)
+//            locationManager!!.removeUpdates(locationListener)
+//        }else{
+//            sharedPrefManager.isLocationEnabled = false
+//        }
     }
 
     private fun getCameraCallback(): AvailabilityCallback {
@@ -102,6 +122,24 @@ class IndicatorService : AccessibilityService() {
             }
         }
         return micCallback as AudioRecordingCallback
+    }
+
+    private fun getLocationCallback(): GnssStatus.Callback {
+        locationCallback = object : GnssStatus.Callback(){
+            override fun onStarted() {
+                super.onStarted()
+                isLocationOn = true
+                showLocation()
+                triggerVibration()
+            }
+
+            override fun onStopped() {
+                super.onStopped()
+                isLocationOn = false
+                hideLocation()
+            }
+        }
+        return locationCallback as GnssStatus.Callback
     }
 
     private fun triggerVibration() {
@@ -304,9 +342,17 @@ class IndicatorService : AccessibilityService() {
         }
     }
 
+    private fun unRegisterLocationCallback() {
+        if (locationManager != null
+                && locationCallback != null) {
+            locationManager!!.unregisterGnssStatusCallback(locationCallback!!)
+        }
+    }
+
     override fun onDestroy() {
         unRegisterCameraCallBack()
         unRegisterMicCallback()
+        unRegisterLocationCallback()
         super.onDestroy()
     }
 }

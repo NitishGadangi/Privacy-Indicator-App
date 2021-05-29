@@ -24,6 +24,14 @@ public class SharedPrefManager {
 
     private static final String DEFAULT_INDICATOR_COLOR = "#FFFFFF";
     private static final String DEFAULT_INDICATOR_BACKGROUND_COLOR = "#000000";
+    private static final boolean DEFAULT_CAMERA_ENABLED = true;
+    private static final boolean DEFAULT_MIC_ENABLED = true;
+    private static final boolean DEFAULT_LOC_ENABLED = false;
+    private static final boolean DEFAULT_NOTIFICATION_ENABLED = false;
+    private static final boolean DEFAULT_VIB_ENABLED = false;
+    private static final String DEFAULT_INDICATOR_SIZE = IndicatorSize.M.name();
+    private static final String DEFAULT_INDICATOR_OPACITY = IndicatorOpacity.EIGHTY.name();
+    private static final String DEFAULT_INDICATOR_POSITION = IndicatorPosition.TOP_RIGHT.name();
 
     private static SharedPrefManager sharedPrefManager;
     private SharedPreferences sharedPreferences;
@@ -83,7 +91,7 @@ public class SharedPrefManager {
     }
 
     public boolean isCameraIndicatorEnabled(){
-        return getBoolean(context, "CAMERA_ENABLED", true);
+        return getBoolean(context, "CAMERA_ENABLED", DEFAULT_CAMERA_ENABLED);
     }
 
     public void setMicIndicatorEnabled(boolean value){
@@ -91,7 +99,7 @@ public class SharedPrefManager {
     }
 
     public boolean isMicIndicatorEnabled(){
-        return getBoolean(context, MIC_ENABLED, true);
+        return getBoolean(context, MIC_ENABLED, DEFAULT_MIC_ENABLED);
     }
 
     public void setNotificationEnabled(boolean value){
@@ -99,11 +107,11 @@ public class SharedPrefManager {
     }
 
     public boolean isNotificationEnabled(){
-        return getBoolean(context, NOTIFICATION_ENABLED, false);
+        return getBoolean(context, NOTIFICATION_ENABLED, DEFAULT_NOTIFICATION_ENABLED);
     }
 
     public boolean isLocationEnabled(){
-        return getBoolean(context, LOC_ENABLED, false);
+        return getBoolean(context, LOC_ENABLED, DEFAULT_LOC_ENABLED);
     }
 
     public void setLocationEnabled(boolean value){
@@ -115,7 +123,7 @@ public class SharedPrefManager {
     }
 
     public boolean isVibrationEnabled(){
-        return getBoolean(context, VIB_ENABLED, false);
+        return getBoolean(context, VIB_ENABLED, DEFAULT_VIB_ENABLED);
     }
 
     public void setIndicatorColor(String value){
@@ -139,7 +147,7 @@ public class SharedPrefManager {
     }
 
     public IndicatorSize getIndicatorSize(){
-        return IndicatorSize.valueOf(getString(context, INDICATOR_SIZE, IndicatorSize.M.name()));
+        return IndicatorSize.valueOf(getString(context, INDICATOR_SIZE, DEFAULT_INDICATOR_SIZE));
     }
 
     public void setIndicatorOpacity(IndicatorOpacity value){
@@ -147,7 +155,7 @@ public class SharedPrefManager {
     }
 
     public IndicatorOpacity getIndicatorOpacity(){
-        return IndicatorOpacity.valueOf(getString(context, INDICATOR_OPACITY, IndicatorOpacity.EIGHTY.name()));
+        return IndicatorOpacity.valueOf(getString(context, INDICATOR_OPACITY, DEFAULT_INDICATOR_OPACITY));
     }
 
     public void setIndicatorPosition(IndicatorPosition value){
@@ -155,7 +163,7 @@ public class SharedPrefManager {
     }
 
     public IndicatorPosition getIndicatorPosition(){
-        return IndicatorPosition.valueOf(getString(context, INDICATOR_POSITION, IndicatorPosition.TOP_RIGHT.name()));
+        return IndicatorPosition.valueOf(getString(context, INDICATOR_POSITION, DEFAULT_INDICATOR_POSITION));
     }
 
 }

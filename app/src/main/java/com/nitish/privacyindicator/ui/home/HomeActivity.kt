@@ -148,6 +148,10 @@ class HomeActivity : AppCompatActivity() {
         binding.contentCredits.imgLinkedIn.setOnClickListener {
             this.openBrowser(HomeViewModel.LINKEDIN)
         }
+
+        binding.contentCredits.tvFossHacks.setOnClickListener {
+            this.openBrowser(HomeViewModel.FOSSHACKS)
+        }
     }
 
     private fun openAccessibilitySettingsPage(isServiceDisabled:Boolean) {
