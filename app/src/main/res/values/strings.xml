@@ -14,29 +14,29 @@
     <string name="privacy_indicators_disabled_title">Privacy Indicators are disabled</string>
 
     <string name="camera_indicator_title">Camera Indicator</string>
-    <string name="camera_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="camera_indicator_description">This feature toggle will enable Camera Indicator which will notify you every time when a third-party app or service tried to access your Camera Hardware.</string>
 
     <string name="microphone_indicator_title">Microphone Indicator</string>
-    <string name="microphone_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="microphone_indicator_description">This feature toggle will enable Microphone Indicator which will notify you every time when a third-party app or service tried to access your Microphone.</string>
 
     <string name="location_indicator_title">Location Indicator</string>
-    <string name="location_indicator_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="location_indicator_description">GPS Hardware usage indicator. This feature is EXPERIMENTAL and might not work</string>
 
     <string name="vibration_alert_title">Vibration Alert</string>
-    <string name="vibration_alert_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="vibration_alert_description">Turning this on will give you a haptic feedback to indicate camera and microphone usage of any third-party app or service.</string>
 
     <string name="notification_alert_title">Notification Alert</string>
-    <string name="notification_alert_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="notification_alert_description">Turning this on will give you a foreground notification when ever the camera or microphone usage is detected.</string>
 
     <string name="customization_center_title">Customize Indicators</string>
-    <string name="customization_center_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="customization_center_description">You can customise how, where and which indicators to be appeared. Configure the look and feel of Indicators</string>
 
     <string name="indicator_logs_title">Indicator Logs</string>
-    <string name="indicator_logs_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="indicator_logs_description">View the summary of Camera, Microphone and Location usage by various apps. Arranged in chronological order and statistically displayed. (Inspired from Android 12)</string>
 
     <string name="share_title">Share with your friends</string>
-    <string name="share_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="share_description">Spread the power of privacy control to your friends and also rate us on Play store if you feel this app useful.</string>
 
     <string name="report_issue_title">Report Issue or Request Feature</string>
-    <string name="report_issue_description">Turning this on will enable location dot which monitors app which use GPS service on your phone.</string>
+    <string name="report_issue_description">This app is completely open-source. If you have any issue or willing to request a feature click here to go to GitHub repo.</string>
 </resources>
