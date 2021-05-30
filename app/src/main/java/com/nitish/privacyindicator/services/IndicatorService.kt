@@ -5,6 +5,7 @@ import android.accessibilityservice.AccessibilityService
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -20,6 +21,7 @@ import android.media.AudioRecordingConfiguration
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
@@ -29,25 +31,34 @@ import android.view.animation.ScaleAnimation
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.nitish.privacyindicator.BuildConfig
 import com.nitish.privacyindicator.R
 import com.nitish.privacyindicator.databinding.IndicatorsLayoutBinding
+import com.nitish.privacyindicator.db.AccessLogsDatabase
 import com.nitish.privacyindicator.helpers.setViewTint
 import com.nitish.privacyindicator.helpers.updateOpacity
 import com.nitish.privacyindicator.helpers.updateSize
+import com.nitish.privacyindicator.models.AccessLog
+import com.nitish.privacyindicator.models.IndicatorType
+import com.nitish.privacyindicator.repository.AccessLogsRepo
 import com.nitish.privacyindicator.repository.SharedPrefManager
 import com.nitish.privacyindicator.ui.home.HomeActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class IndicatorService : AccessibilityService() {
     private lateinit var binding: IndicatorsLayoutBinding
     private var cameraManager: CameraManager? = null
     private var cameraCallback: AvailabilityCallback? = null
-    private var locationManager: LocationManager? =null
+    private var locationManager: LocationManager? = null
     private var locationCallback: GnssStatus.Callback? = null
     private var audioManager: AudioManager? = null
     private var micCallback: AudioRecordingCallback? = null
     private lateinit var sharedPrefManager: SharedPrefManager
     private lateinit var layoutParams: WindowManager.LayoutParams
     private lateinit var windowManager: WindowManager
+    private lateinit var accessLogsRepo: AccessLogsRepo
     private val notification_channel_id = "PRIVACY_INDICATORS_NOTIFICATION"
     private var notifManager: NotificationManagerCompat? = null
     private var notificationBuilder: NotificationCompat.Builder? = null
@@ -55,6 +66,7 @@ class IndicatorService : AccessibilityService() {
     private var isCameraOn = false
     private var isMicOn = false
     private var isLocationOn = false
+    private var currentAppId = BuildConfig.APPLICATION_ID
 
 
     override fun onServiceConnected() {
@@ -66,6 +78,7 @@ class IndicatorService : AccessibilityService() {
 
     private fun fetchData() {
         sharedPrefManager = SharedPrefManager.getInstance(applicationContext)
+        accessLogsRepo = AccessLogsRepo(AccessLogsDatabase(this))
     }
 
     private fun startCallBacks() {
@@ -75,15 +88,20 @@ class IndicatorService : AccessibilityService() {
         if (audioManager == null) audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         audioManager!!.registerAudioRecordingCallback(getMicCallback(), null)
 
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-//            if(locationManager==null) locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
-//            locationManager!!.registerGnssStatusCallback(getLocationCallback())
-//            val locationListener = LocationListener {  }
-//            locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 8.4f,locationListener)
-//            locationManager!!.removeUpdates(locationListener)
-//        }else{
-//            sharedPrefManager.isLocationEnabled = false
-//        }
+        registerLocationCallback()
+    }
+
+    //This feature is EXPERIMENTAL
+    private fun registerLocationCallback() {
+        /*if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if(locationManager==null) locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
+            locationManager!!.registerGnssStatusCallback(getLocationCallback())
+            val locationListener = LocationListener {  }
+            locationManager!!.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 8.4f,locationListener)
+            locationManager!!.removeUpdates(locationListener)
+        }else{
+            sharedPrefManager.isLocationEnabled = false
+        }*/
     }
 
     private fun getCameraCallback(): AvailabilityCallback {
@@ -125,7 +143,7 @@ class IndicatorService : AccessibilityService() {
     }
 
     private fun getLocationCallback(): GnssStatus.Callback {
-        locationCallback = object : GnssStatus.Callback(){
+        locationCallback = object : GnssStatus.Callback() {
             override fun onStarted() {
                 super.onStarted()
                 isLocationOn = true
@@ -192,10 +210,25 @@ class IndicatorService : AccessibilityService() {
     private val layoutGravity: Int
         get() = sharedPrefManager.indicatorPosition.layoutGravity
 
+    private fun makeLog(indicatorType: IndicatorType) {
+        if(isLogEligible(currentAppId)){
+            val log = AccessLog(System.currentTimeMillis(), currentAppId, indicatorType)
+            GlobalScope.launch(Dispatchers.IO) {
+                accessLogsRepo.save(log)
+            }
+        }
+    }
+
+    private fun isLogEligible(currentAppId: String): Boolean {
+        return currentAppId != BuildConfig.APPLICATION_ID
+                && currentAppId != "com.android.settings"
+    }
+
     private fun showMic() {
         if (sharedPrefManager.isMicIndicatorEnabled) {
             updateIndicatorProperties()
             binding.ivMic.visibility = View.VISIBLE
+            makeLog(IndicatorType.MICROPHONE)
         }
     }
 
@@ -207,6 +240,7 @@ class IndicatorService : AccessibilityService() {
         if (sharedPrefManager.isCameraIndicatorEnabled) {
             updateIndicatorProperties()
             binding.ivCam.visibility = View.VISIBLE
+            makeLog(IndicatorType.CAMERA)
         }
     }
 
@@ -218,6 +252,7 @@ class IndicatorService : AccessibilityService() {
         if (sharedPrefManager.isLocationEnabled) {
             updateIndicatorProperties()
             binding.ivLoc.visibility = View.VISIBLE
+            makeLog(IndicatorType.LOCATION)
         }
     }
 
@@ -327,7 +362,13 @@ class IndicatorService : AccessibilityService() {
     }
 
     override fun onInterrupt() {}
-    override fun onAccessibilityEvent(accessibilityEvent: AccessibilityEvent) {}
+    override fun onAccessibilityEvent(accessibilityEvent: AccessibilityEvent) {
+        if(accessibilityEvent.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
+                && accessibilityEvent.packageName != null){
+            val componentName = ComponentName(accessibilityEvent.packageName.toString(), accessibilityEvent.className.toString())
+            currentAppId = componentName.packageName
+        }
+    }
     private fun unRegisterCameraCallBack() {
         if (cameraManager != null
                 && cameraCallback != null) {
