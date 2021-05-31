@@ -3,6 +3,7 @@
     package="com.nitish.privacyindicator">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +22,9 @@
 
         <service
             android:name=".services.IndicatorService"
+            android:enabled="true"
+            android:exported="true"
+            android:foregroundServiceType="camera|microphone|location"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />

@@ -8,6 +8,8 @@ import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import com.nitish.privacyindicator.models.IndicatorOpacity
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 fun Activity.goToActivity(newActivity: Class<*>?) {
@@ -40,4 +42,18 @@ fun ImageView.setViewTint(hexColor: String) {
 fun View.updateOpacity(opacity: Float) {
     requestLayout()
     alpha = opacity
+}
+
+fun Long.toTime(): String {
+    val cal = Calendar.getInstance()
+    cal.timeInMillis = this
+    val formatter = SimpleDateFormat("hh:mm a")
+    return formatter.format(cal.time).toString().toUpperCase()
+}
+
+fun Long.toDate(): String {
+    val cal = Calendar.getInstance()
+    cal.timeInMillis = this
+    val formatter = SimpleDateFormat("dd MMM yyyy")
+    return formatter.format(cal.time).toString()
 }

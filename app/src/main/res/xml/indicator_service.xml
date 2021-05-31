@@ -3,6 +3,8 @@
     android:description="@string/service_description"
     android:summary="@string/service_summary"
     android:settingsActivity="com.example.android.accessibility.ServiceSettingsActivity"
-    android:packageNames="com.nitish.privacyindicator"
-    android:accessibilityFlags="flagRetrieveInteractiveWindows"
-    android:canRetrieveWindowContent="true"/>
+    android:accessibilityFlags="flagIncludeNotImportantViews|flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:accessibilityEventTypes="typeAllMask"
+    android:canRetrieveWindowContent="true"
+    />

@@ -1,12 +1,11 @@
-package com.nitish.privacyindicator.ui
+package com.nitish.privacyindicator.ui.home
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.nitish.privacyindicator.repository.SharedPrefManager
-import com.nitish.privacyindicator.ui.home.HomeViewModel
 
-class ViewModelProviderFactory(
+class HomeViewModelProviderFactory(
         private val application: Application,
         private val sharedPrefManager: SharedPrefManager
 ): ViewModelProvider.Factory {

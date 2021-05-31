@@ -12,7 +12,8 @@ data class AccessLog(
         val id: Int,
         val time: Long,
         val appId: String,
+        val appName: String,
         val indicatorType: IndicatorType
 ) {
-    constructor(time: Long, appId: String, indicatorType: IndicatorType) : this(0, time, appId, indicatorType)
+    constructor(time: Long, appId: String, appName: String, indicatorType: IndicatorType) : this(0, time, appId, appName, indicatorType)
 }

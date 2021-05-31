@@ -21,7 +21,6 @@ import com.nitish.privacyindicator.helpers.setViewTint
 import com.nitish.privacyindicator.services.IndicatorService
 import com.nitish.privacyindicator.repository.SharedPrefManager
 import com.nitish.privacyindicator.ui.logs.AccessLogsActivity
-import com.nitish.privacyindicator.ui.ViewModelProviderFactory
 
 
 class HomeActivity : AppCompatActivity() {
@@ -39,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
 
         serviceEnabledBinding = binding.contentServiceEnabled
 
-        val viewModelProviderFactory = ViewModelProviderFactory(application, SharedPrefManager.getInstance(applicationContext))
+        val viewModelProviderFactory = HomeViewModelProviderFactory(application, SharedPrefManager.getInstance(applicationContext))
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(HomeViewModel::class.java)
 
         setUpObservers()

@@ -14,8 +14,8 @@ interface AccessLogsDao {
     suspend fun upsert(accessLog: AccessLog): Long
 
     @Query("SELECT * FROM access_logs")
-    fun getAllLogs(): LiveData<AccessLog>
+    fun getAllLogs(): LiveData<List<AccessLog>>
 
     @Query("DELETE FROM access_logs")
-    fun clearLogs()
+    suspend fun clearLogs()
 }

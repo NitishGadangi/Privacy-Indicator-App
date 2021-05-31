@@ -5,17 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvTimeStamp"
-        style="@style/SubtitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="12:25 AM"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
@@ -49,7 +38,7 @@
         android:layout_height="60dp"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvTimeStamp"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dotted_line" />
 
@@ -76,6 +65,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="com.app.pakagename" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView3">
+
+        <TextView
+            android:id="@+id/tvTimeStamp"
+            style="@style/SubtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="10:52 AM" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            style="@style/SubHeadingText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="31 May 2021" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

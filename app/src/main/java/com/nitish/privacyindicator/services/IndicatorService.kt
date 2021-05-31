@@ -35,9 +35,7 @@ import com.nitish.privacyindicator.BuildConfig
 import com.nitish.privacyindicator.R
 import com.nitish.privacyindicator.databinding.IndicatorsLayoutBinding
 import com.nitish.privacyindicator.db.AccessLogsDatabase
-import com.nitish.privacyindicator.helpers.setViewTint
-import com.nitish.privacyindicator.helpers.updateOpacity
-import com.nitish.privacyindicator.helpers.updateSize
+import com.nitish.privacyindicator.helpers.*
 import com.nitish.privacyindicator.models.AccessLog
 import com.nitish.privacyindicator.models.IndicatorType
 import com.nitish.privacyindicator.repository.AccessLogsRepo
@@ -69,8 +67,16 @@ class IndicatorService : AccessibilityService() {
     private var currentAppId = BuildConfig.APPLICATION_ID
 
 
-    override fun onServiceConnected() {
+    override fun onCreate() {
+        super.onCreate()
         fetchData()
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        return super.onStartCommand(intent, flags, startId)
+    }
+
+    override fun onServiceConnected() {
         createOverlay()
         setUpInnerViews()
         startCallBacks()
@@ -189,15 +195,14 @@ class IndicatorService : AccessibilityService() {
     private fun createOverlay() {
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         layoutParams = WindowManager.LayoutParams()
-        layoutParams.type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
-        layoutParams.format = PixelFormat.TRANSLUCENT
-        layoutParams.flags = layoutParams.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-        layoutParams.width = WindowManager.LayoutParams.WRAP_CONTENT
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        layoutParams.gravity = layoutGravity
-        layoutParams.flags = (WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-                or WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        layoutParams.apply {
+            type = WindowManager.LayoutParams.TYPE_ACCESSIBILITY_OVERLAY
+            format = PixelFormat.TRANSLUCENT
+            flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+            width = WindowManager.LayoutParams.WRAP_CONTENT
+            height = WindowManager.LayoutParams.WRAP_CONTENT
+            gravity = layoutGravity
+        }
         binding = IndicatorsLayoutBinding.inflate(LayoutInflater.from(this))
         windowManager.addView(binding.root, layoutParams)
     }
@@ -212,16 +217,20 @@ class IndicatorService : AccessibilityService() {
 
     private fun makeLog(indicatorType: IndicatorType) {
         if(isLogEligible(currentAppId)){
-            val log = AccessLog(System.currentTimeMillis(), currentAppId, indicatorType)
+            val log = AccessLog(System.currentTimeMillis(), currentAppId, getAppName(currentAppId), indicatorType)
             GlobalScope.launch(Dispatchers.IO) {
                 accessLogsRepo.save(log)
             }
         }
     }
 
+    private fun getAppName(packageName: String): String {
+        val packageManager = applicationContext.packageManager
+        return packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)) as String
+    }
+
     private fun isLogEligible(currentAppId: String): Boolean {
         return currentAppId != BuildConfig.APPLICATION_ID
-                && currentAppId != "com.android.settings"
     }
 
     private fun showMic() {
