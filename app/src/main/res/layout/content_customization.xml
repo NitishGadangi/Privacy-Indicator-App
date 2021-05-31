@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvHeading1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Indicator Position"
+                style="@style/HeadingText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading01" />
+
+            <lib.kingja.switchbutton.SwitchMultiButton
+                android:id="@+id/multiSwitchVerticalHeight"
+                style="@style/MiltiSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading1"
+                app:selectedTab="0"
+                app:switchTabs="@array/indicator_position_vertical" />
+
+            <lib.kingja.switchbutton.SwitchMultiButton
+                android:id="@+id/multiSwitchHorizontalHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/multiSwitchVerticalHeight"
+                app:switchTabs="@array/indicator_position_horizontal"
+                app:selectedTab="2"
+                style="@style/MiltiSwitch"/>
+
+            <TextView
+                android:id="@+id/tvHeading2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Indicator Size"
+                style="@style/HeadingText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/multiSwitchHorizontalHeight" />
+
+            <lib.kingja.switchbutton.SwitchMultiButton
+                android:id="@+id/multiSwitchSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading2"
+                app:switchTabs="@array/indicator_size"
+                app:selectedTab="2"
+                style="@style/MiltiSwitch"/>
+
+            <TextView
+                android:id="@+id/tvHeading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Indicator Opacity"
+                style="@style/HeadingText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/multiSwitchSize" />
+
+            <lib.kingja.switchbutton.SwitchMultiButton
+                android:id="@+id/multiSwitchOpacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:paddingLeft="4dp"
+                android:paddingTop="8dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading3"
+                app:switchTabs="@array/indicator_opacity"
+                app:selectedTab="1"
+                style="@style/MiltiSwitch"/>
+
+            <LinearLayout
+                android:id="@+id/tvHeading0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/tileForeGround"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Indicators Foreground Colour"
+                    style="@style/HeadingText"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="customise the foreground color of the Indicators. Click on the Tile aside to select a color."
+                    android:layout_marginTop="5dp"
+                    style="@style/SubHeadingText"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/tileForeGround"
+                android:layout_width="35dp"
+                android:layout_height="35sp"
+                android:background="@drawable/square_rounded"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHeading0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvHeading0"
+                app:srcCompat="@drawable/square_rounded"
+                android:clickable="true"
+                android:focusable="true"
+                android:elevation="5dp"
+                android:padding="2dp"
+                app:tint="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/tvHeading01"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/tileBackGround"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading0">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Indicators Background Colour"
+                    style="@style/HeadingText"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="customise the background color of the Indicators. Click on the Tile aside to select a color."
+                    android:layout_marginTop="5dp"
+                    style="@style/SubHeadingText"/>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/tileBackGround"
+                android:layout_width="35dp"
+                android:layout_height="35sp"
+                android:padding="2dp"
+                android:background="@drawable/square_rounded"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@+id/tvHeading01"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvHeading01"
+                app:srcCompat="@drawable/square_rounded"
+                android:elevation="5dp"
+                app:tint="@color/colorAccent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="35dp"
+    android:paddingRight="35dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvNitish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/senbold"
+        android:text="@string/made_by"
+        app:layout_constraintBottom_toTopOf="@id/tvFossHacks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgGithub" />
+
+    <TextView
+        android:id="@+id/tvFossHacks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/senbold"
+        android:text="@string/built_by"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNitish" />
+
+    <ImageView
+        android:id="@+id/imgGithub"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:padding="5dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="@color/blackSecondary"
+        app:layout_constraintEnd_toStartOf="@+id/imgLinkedIn"
+        app:layout_constraintStart_toStartOf="@+id/tvNitish"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/github" />
+
+    <ImageView
+        android:id="@+id/imgLinkedIn"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="5dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:tint="@color/blackSecondary"
+        app:layout_constraintEnd_toEndOf="@+id/tvNitish"
+        app:layout_constraintStart_toEndOf="@+id/imgGithub"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/linedin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

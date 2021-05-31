@@ -1,444 +1,522 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_cam"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
+        android:layout_height="match_parent"
+        android:fillViewport="true">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="12dp">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_cam"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Camera Indicator"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:padding="16dp">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
+                android:id="@+id/tvHeading1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Indicator Color"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_cam_color"
-                app:layout_constraintEnd_toStartOf="@+id/iv_cam_color"
+                android:text="General"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_cam_color" />
+                app:layout_constraintTop_toTopOf="parent"
+                style="@style/SubtitleText"/>
 
             <ImageView
-                android:id="@+id/iv_cam_color"
+                android:id="@+id/imgCamera"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:tint="@color/cam"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_cam"
-                app:srcCompat="@drawable/ic_dot"
-                tools:ignore="UseAppTint" />
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/camText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/camText"
+                android:src="@drawable/camera" />
 
-            <TextView
-                android:id="@+id/textView9"
+            <LinearLayout
+                android:id="@+id/camText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Indicator Size"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_cam_color" />
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/switchCamera"
+                app:layout_constraintStart_toEndOf="@+id/imgCamera"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading1">
 
-            <TextView
-                android:id="@+id/tv_cam_size"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/tvCamTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/camera_indicator_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvCamDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/camera_indicator_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchCamera"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="20"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
+                app:layout_constraintBottom_toBottomOf="@+id/camText"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_cam_color" />
-
-            <SeekBar
-                android:id="@+id/cam_size"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:min="25"
-                android:max="200"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView9"/>
-
-            <TextView
-                android:id="@+id/cam_indicator_opacity_tv"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Indicator Opacity"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cam_size" />
-
-            <TextView
-                android:id="@+id/tv_cam_opacity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="20"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cam_size" />
-
-            <SeekBar
-                android:id="@+id/cam_opacity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:min="0"
-                android:max="255"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cam_indicator_opacity_tv"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_mic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_cam">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/card_mic_root"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="12dp">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_mic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Microphone Indicator"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Indicator Color"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_mic_color"
-                app:layout_constraintEnd_toStartOf="@+id/iv_mic_color"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/iv_mic_color" />
+                app:layout_constraintTop_toTopOf="@+id/camText" />
 
             <ImageView
-                android:id="@+id/iv_mic_color"
+                android:id="@+id/imgMic"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_mic"
-                app:srcCompat="@drawable/ic_dot"
-                android:tint="@color/mic"
-                tools:ignore="UseAppTint"/>
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Indicator Size"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
-                android:layout_marginTop="16dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/micText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_mic_color" />
+                app:layout_constraintTop_toTopOf="@+id/micText"
+                android:src="@drawable/microphone" />
 
-            <TextView
-                android:id="@+id/tv_mic_size"
+            <LinearLayout
+                android:id="@+id/micText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="20"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_mic_color" />
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/switchMic"
+                app:layout_constraintStart_toEndOf="@+id/imgMic"
+                app:layout_constraintTop_toBottomOf="@+id/camText">
 
-            <SeekBar
-                android:id="@+id/mic_size"
+                <TextView
+                    android:id="@+id/tvMicTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/microphone_indicator_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvMicDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/microphone_indicator_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchMic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/micText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/micText" />
+
+            <ImageView
+                android:id="@+id/imgLocation"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/locationText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/locationText"
+                android:src="@drawable/location" />
+
+            <LinearLayout
+                android:id="@+id/locationText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/switchLocation"
+                app:layout_constraintStart_toEndOf="@+id/imgLocation"
+                app:layout_constraintTop_toBottomOf="@+id/micText">
+
+                <TextView
+                    android:id="@+id/tvLocationTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/location_indicator_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvLocationDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/location_indicator_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/locationText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/locationText" />
+
+            <View
+                android:id="@+id/separator1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:min="25"
-                android:max="200"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_mic_size"/>
+                android:layout_height="1dp"
+                android:background="@color/grey100"
+                app:layout_constraintTop_toBottomOf="@id/locationText"
+                android:layout_margin="16dp"/>
 
             <TextView
-                android:id="@+id/mic_indicator_opacity_tv"
-                android:layout_width="0dp"
+                android:id="@+id/tvHeading2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Indicator Opacity"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
+                android:text="Customization"
                 android:layout_marginTop="16dp"
+                style="@style/SubtitleText"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mic_size" />
+                app:layout_constraintTop_toTopOf="@id/separator1" />
 
-            <TextView
-                android:id="@+id/tv_mic_opacity"
+            <ImageView
+                android:id="@+id/imgVibration"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/vibText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vibText"
+                android:src="@drawable/vibration" />
+
+            <LinearLayout
+                android:id="@+id/vibText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="20"
-                android:textColor="@color/blackSecondary"
-                android:textSize="20sp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/mic_size" />
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/switchVibration"
+                app:layout_constraintStart_toEndOf="@+id/imgVibration"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading2">
 
-            <SeekBar
-                android:id="@+id/mic_opacity"
+                <TextView
+                    android:id="@+id/tvVibTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vibration_alert_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvVibDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/vibration_alert_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchVibration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/vibText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/vibText" />
+
+            <ImageView
+                android:id="@+id/imgNotification"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/notifText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/notifText"
+                android:src="@drawable/bell" />
+
+            <LinearLayout
+                android:id="@+id/notifText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/switchNotification"
+                app:layout_constraintStart_toEndOf="@+id/imgNotification"
+                app:layout_constraintTop_toBottomOf="@+id/vibText">
+
+                <TextView
+                    android:id="@+id/tvNotifTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/notification_alert_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvNotifDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/notification_alert_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchNotification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/notifText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/notifText" />
+
+
+            <ImageView
+                android:id="@+id/imgSettings"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/settingsText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/settingsText"
+                android:src="@drawable/controls" />
+
+            <LinearLayout
+                android:id="@+id/settingsText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@+id/switchSettings"
+                app:layout_constraintStart_toEndOf="@+id/imgSettings"
+                app:layout_constraintTop_toBottomOf="@+id/notifText">
+
+                <TextView
+                    android:id="@+id/tvSettingsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/customization_center_title"
+                    style="@style/HeadingText"/>
+
+                <TextView
+                    android:id="@+id/tvSettingsDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/customization_center_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/switchSettings"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:src="@drawable/right"
+                app:layout_constraintBottom_toBottomOf="@+id/settingsText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/settingsText"
+                app:tint="@color/colorAccent" />
+            <View
+                android:id="@+id/separator2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:min="0"
-                android:max="255"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="2dp"
-                android:layout_marginEnd="2dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/mic_indicator_opacity_tv"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                android:layout_height="1dp"
+                android:background="@color/grey100"
+                app:layout_constraintTop_toBottomOf="@id/settingsText"
+                android:layout_margin="16dp"/>
 
+            <TextView
+                android:id="@+id/tvHeading3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logs"
+                android:layout_marginTop="16dp"
+                style="@style/SubtitleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/separator2" />
+
+            <ImageView
+                android:id="@+id/imgLogs"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/logsText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/logsText"
+                android:src="@drawable/logs" />
+
+            <LinearLayout
+                android:id="@+id/logsText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@+id/switchLogs"
+                app:layout_constraintStart_toEndOf="@+id/imgLogs"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading3">
+
+                <TextView
+                    android:id="@+id/tvLogsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/indicator_logs_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvLogsDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/indicator_logs_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/switchLogs"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:src="@drawable/right"
+                app:layout_constraintBottom_toBottomOf="@+id/logsText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/logsText"
+                app:tint="@color/colorAccent" />
+
+
+            <View
+                android:id="@+id/separator3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey100"
+                app:layout_constraintTop_toBottomOf="@id/logsText"
+                android:layout_margin="16dp"/>
+
+            <TextView
+                android:id="@+id/tvHeading4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Support"
+                android:layout_marginTop="16dp"
+                style="@style/SubtitleText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/separator3" />
+
+            <ImageView
+                android:id="@+id/imgShare"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/shareText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/shareText"
+                android:src="@drawable/share" />
+
+            <LinearLayout
+                android:id="@+id/shareText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@+id/switchLogs"
+                app:layout_constraintStart_toEndOf="@+id/imgShare"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeading4">
+
+                <TextView
+                    android:id="@+id/tvShareTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/share_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvShareDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/share_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/switchShare"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:src="@drawable/right"
+                app:layout_constraintBottom_toBottomOf="@+id/shareText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/shareText"
+                app:tint="@color/colorAccent" />
+
+            <ImageView
+                android:id="@+id/imageIssue"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/issueText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/issueText"
+                android:src="@drawable/issue" />
+
+            <LinearLayout
+                android:id="@+id/issueText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintEnd_toStartOf="@+id/switchIssue"
+                app:layout_constraintStart_toEndOf="@+id/imageIssue"
+                app:layout_constraintTop_toBottomOf="@+id/shareText">
+
+                <TextView
+                    android:id="@+id/tvIssueTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/report_issue_title"
+                    style="@style/HeadingText" />
+
+                <TextView
+                    android:id="@+id/tvIssueDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="@string/report_issue_description"
+                    style="@style/SubHeadingText" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/switchIssue"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="5dp"
+                android:src="@drawable/right"
+                app:layout_constraintBottom_toBottomOf="@+id/issueText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/issueText"
+                app:tint="@color/colorAccent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_vib"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="10dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_mic" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_vibration"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Vibration Alert"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/vibration_alert_summary"
-                android:textSize="17sp"
-                android:lineSpacingMultiplier="1.2"
-                android:textColor="@color/blackSecondary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_vibration" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_notif"
-        app:cardElevation="5dp"
-        app:cardCornerRadius="10dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_vib" >
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:padding="12dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch_notif"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Notification Alert"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:lineSpacingMultiplier="1.2"
-                android:text="@string/notification_alert_summary"
-                android:textSize="17sp"
-                android:textColor="@color/blackSecondary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switch_notif" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_notif"
-        app:layout_constraintVertical_bias="0.0">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="12dp">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Indicator location"
-                android:textColor="@color/blackPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <RadioGroup
-                android:id="@+id/rg_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-                <RadioButton
-                    android:id="@+id/rb_tc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Top Center" />
-
-                <RadioButton
-                    android:id="@+id/rb_tl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Top Left" />
-
-                <RadioButton
-                    android:id="@+id/rb_tr"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Top Right" />
-
-                <RadioButton
-                    android:id="@+id/rb_bc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bottom Center" />
-
-                <RadioButton
-                    android:id="@+id/rb_br"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bottom Right" />
-
-                <RadioButton
-                    android:id="@+id/rb_bl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Bottom Left" />
-
-            </RadioGroup>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
 
 
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="indicator_position_horizontal">
+        <item>Left</item>
+        <item>Center</item>
+        <item>Right</item>
+    </string-array>
+
+    <string-array name="indicator_position_vertical">
+        <item>Top</item>
+        <item>Bottom</item>
+    </string-array>
+
+    <string-array name="indicator_size">
+        <item>XS</item>
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+    </string-array>
+
+    <string-array name="indicator_opacity">
+        <item>20%</item>
+        <item>50%</item>
+        <item>80%</item>
+        <item>100%</item>
+    </string-array>
+</resources>

@@ -6,15 +6,37 @@
     </string>
     <string name="service_summary">Get notified every time a third-party app uses camera or microphone</string>
     <string name="made_by">Made with ❤ by Nitish</string>
-    <string name="app_description">Get notified every time a third-party app or a service uses camera or microphone. Inspired from ios14 recording indicators.</string>
-    <string name="support_text"> I am a student, tutor, engineer and a maker to various projects. For 3+ years, I have been working on Open Source.\n\n
-If you use any of my projects or like what I\'m doing, please consider backing me with simple donations so that I can continue my open source work.</string>
-    <string name="disclaimer_text"> The current build of the app is still in beta, and not extensively tested on various devices.\n\n
-        <b>If you find any issue or would like to request a feature</b>
-        feel free to use the below button and open an issue on the GitHub Repository.</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_help">Help</string>
-    <string name="built_by">Built in FOSS HACKS</string>
+    <string name="built_by">Built in FOSS HACKS 2020</string>
+
     <string name="notification_alert_summary">You will get an active notification on the status bar while an app is using your camera or microphone.</string>
-    <string name="vibration_alert_summary">you will get a haptic feedback every time any app starts using camera or microphone.</string>
+
+    <string name="indicators_disabled_description">Click on the above Switch and Turn on the Privacy Indicator in the Accessibility Settings</string>
+    <string name="privacy_indicators_disabled_title">Privacy Indicators are disabled</string>
+
+    <string name="camera_indicator_title">Camera Indicator</string>
+    <string name="camera_indicator_description">This feature toggle will enable Camera Indicator which will notify you every time when a third-party app or service tried to access your Camera Hardware.</string>
+
+    <string name="microphone_indicator_title">Microphone Indicator</string>
+    <string name="microphone_indicator_description">This feature toggle will enable Microphone Indicator which will notify you every time when a third-party app or service tried to access your Microphone.</string>
+
+    <string name="location_indicator_title">Location Indicator</string>
+    <string name="location_indicator_description">GPS Hardware usage indicator. This feature is EXPERIMENTAL and might not work</string>
+
+    <string name="vibration_alert_title">Vibration Alert</string>
+    <string name="vibration_alert_description">Turning this on will give you a haptic feedback to indicate camera and microphone usage of any third-party app or service.</string>
+
+    <string name="notification_alert_title">Notification Alert</string>
+    <string name="notification_alert_description">Turning this on will give you a foreground notification when ever the camera or microphone usage is detected.</string>
+
+    <string name="customization_center_title">Customize Indicators</string>
+    <string name="customization_center_description">You can customise how, where and which indicators to be appeared. Configure the look and feel of Indicators</string>
+
+    <string name="indicator_logs_title">Indicator Logs</string>
+    <string name="indicator_logs_description">View the summary of Camera, Microphone and Location usage by various apps. Arranged in chronological order and statistically displayed. (Inspired from Android 12)</string>
+
+    <string name="share_title">Share with your friends</string>
+    <string name="share_description">Spread the power of privacy control to your friends and also rate us on Play store if you feel this app useful.</string>
+
+    <string name="report_issue_title">Report Issue or Request Feature</string>
+    <string name="report_issue_description">This app is completely open-source. If you have any issue or willing to request a feature click here to go to GitHub repo.</string>
 </resources>
