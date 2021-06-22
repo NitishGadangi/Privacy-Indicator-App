@@ -13,7 +13,7 @@ interface AccessLogsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun upsert(accessLog: AccessLog): Long
 
-    @Query("SELECT * FROM access_logs")
+    @Query("SELECT * FROM access_logs ORDER BY time DESC")
     fun getAllLogs(): LiveData<List<AccessLog>>
 
     @Query("DELETE FROM access_logs")

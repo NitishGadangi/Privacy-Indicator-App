@@ -159,7 +159,8 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="@+id/locationText"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/locationText" />
+                app:layout_constraintTop_toTopOf="@+id/locationText"
+                android:enabled="false"/>
 
             <View
                 android:id="@+id/separator1"

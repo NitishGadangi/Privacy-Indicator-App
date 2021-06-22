@@ -10,8 +10,8 @@ android {
         applicationId "com.nitish.privacyindicator"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 5
-        versionName "1.2.1"
+        versionCode 6
+        versionName "2.0"
 
         buildConfigField "boolean", "IN_APP_TESTING_TOGGLE", "${project.inAppTestingToggle}"
 

@@ -20,7 +20,7 @@
     <string name="microphone_indicator_description">This feature toggle will enable Microphone Indicator which will notify you every time when a third-party app or service tried to access your Microphone.</string>
 
     <string name="location_indicator_title">Location Indicator</string>
-    <string name="location_indicator_description">GPS Hardware usage indicator. This feature is EXPERIMENTAL and might not work</string>
+    <string name="location_indicator_description">GPS Hardware usage indicator.  This feature is still under development. Will be functional from next release.</string>
 
     <string name="vibration_alert_title">Vibration Alert</string>
     <string name="vibration_alert_description">Turning this on will give you a haptic feedback to indicate camera and microphone usage of any third-party app or service.</string>
