@@ -226,7 +226,11 @@ class IndicatorService : AccessibilityService() {
 
     private fun getAppName(packageName: String): String {
         val packageManager = applicationContext.packageManager
-        return packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)) as String
+        return try{
+            packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)) as String
+        }catch (exp: PackageManager.NameNotFoundException){
+            packageName
+        }
     }
 
     private fun isLogEligible(currentAppId: String): Boolean {
