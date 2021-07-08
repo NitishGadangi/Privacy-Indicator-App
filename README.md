@@ -65,13 +65,16 @@ Privacy Indicators will bring the above Recording Indicators feature of iOS 14 t
 ## Download from here:
 
 <a href='https://play.google.com/store/apps/details?id=com.nitish.privacyindicator' target='_blank'>
-    <img height='150' style='border:0px;height:150px;' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' border='0' alt='Download from Playstore' />   </a>
+    <img height='150' style='border:0px;height:150px;' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' border='0' alt='Download from Google Play' />   </a>
   
+<a href='https://f-droid.org/en/packages/com.nitish.privacyindicator/' target='_blank'>
+    <img height='150' style='border:0px;height:150px;' src='https://fdroid.gitlab.io/artwork/badge/get-it-on.png' border='0' alt='Download from F-Droid' />   </a>
+
 <h4>You can also access all the releases from <a href="https://github.com/NitishGadangi/Privacy-Indicator-App/releases">Releases tab</a></h3>
 
 
 ## How to Use
-**Download the App from [Releases](https://github.com/NitishGadangi/Privacy-Indicator-App/releases)** 
+
 1. This App will work only on devices with _Android_ 7.0 (_API_ level _24_) and above, so make sure you having the compatible device.
 2. After installing the App, Enable the Service from the Accessibility Settings.
 3. You can Customise the Indicators color and position as per your choice from the Home.
