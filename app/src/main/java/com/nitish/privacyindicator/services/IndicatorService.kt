@@ -1,6 +1,5 @@
 package com.nitish.privacyindicator.services
 
-import android.Manifest
 import android.accessibilityservice.AccessibilityService
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,7 +12,6 @@ import android.graphics.PixelFormat
 import android.hardware.camera2.CameraManager
 import android.hardware.camera2.CameraManager.AvailabilityCallback
 import android.location.GnssStatus
-import android.location.LocationListener
 import android.location.LocationManager
 import android.media.AudioManager
 import android.media.AudioManager.AudioRecordingCallback
@@ -21,21 +19,21 @@ import android.media.AudioRecordingConfiguration
 import android.os.Build
 import android.os.VibrationEffect
 import android.os.Vibrator
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.WindowManager
 import android.view.accessibility.AccessibilityEvent
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.nitish.privacyindicator.BuildConfig
 import com.nitish.privacyindicator.R
 import com.nitish.privacyindicator.databinding.IndicatorsLayoutBinding
 import com.nitish.privacyindicator.db.AccessLogsDatabase
-import com.nitish.privacyindicator.helpers.*
+import com.nitish.privacyindicator.helpers.setViewTint
+import com.nitish.privacyindicator.helpers.updateOpacity
+import com.nitish.privacyindicator.helpers.updateSize
 import com.nitish.privacyindicator.models.AccessLog
 import com.nitish.privacyindicator.models.IndicatorType
 import com.nitish.privacyindicator.repository.AccessLogsRepo
@@ -216,7 +214,7 @@ class IndicatorService : AccessibilityService() {
         get() = sharedPrefManager.indicatorPosition.layoutGravity
 
     private fun makeLog(indicatorType: IndicatorType) {
-        if(isLogEligible(currentAppId)){
+        if (isLogEligible(currentAppId)) {
             val log = AccessLog(System.currentTimeMillis(), currentAppId, getAppName(currentAppId), indicatorType)
             GlobalScope.launch(Dispatchers.IO) {
                 accessLogsRepo.save(log)
@@ -226,9 +224,9 @@ class IndicatorService : AccessibilityService() {
 
     private fun getAppName(packageName: String): String {
         val packageManager = applicationContext.packageManager
-        return try{
+        return try {
             packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)) as String
-        }catch (exp: PackageManager.NameNotFoundException){
+        } catch (exp: PackageManager.NameNotFoundException) {
             packageName
         }
     }
@@ -376,12 +374,17 @@ class IndicatorService : AccessibilityService() {
 
     override fun onInterrupt() {}
     override fun onAccessibilityEvent(accessibilityEvent: AccessibilityEvent) {
-        if(accessibilityEvent.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
-                && accessibilityEvent.packageName != null){
-            val componentName = ComponentName(accessibilityEvent.packageName.toString(), accessibilityEvent.className.toString())
-            currentAppId = componentName.packageName
+        if (accessibilityEvent.eventType == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED
+                && accessibilityEvent.packageName != null) {
+            currentAppId = try {
+                val componentName = ComponentName(accessibilityEvent.packageName.toString(), accessibilityEvent.className.toString())
+                componentName.packageName
+            } catch (exp: Exception) {
+                BuildConfig.APPLICATION_ID
+            }
         }
     }
+
     private fun unRegisterCameraCallBack() {
         if (cameraManager != null
                 && cameraCallback != null) {
