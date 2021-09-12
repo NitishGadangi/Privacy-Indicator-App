@@ -128,7 +128,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Indicators Foreground Colour"
+                    android:text="Indicators Foreground Color"
                     style="@style/HeadingText"/>
 
                 <TextView
@@ -168,7 +168,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Indicators Background Colour"
+                    android:text="Indicators Background Color"
                     style="@style/HeadingText"/>
 
                 <TextView
